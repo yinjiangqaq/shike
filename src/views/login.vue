@@ -13,7 +13,7 @@
             <div class="form-group">
             <!-- <label for="inputEmail3" class="col-sm-2 control-label">用户名</label> -->
             <div class="col-sm-10 form-inline">
-            <span class="mui-icon mui-icon-person"></span>
+            <span class="glyphicon glyphicon-user"></span>
             <input type="text" id="id" class="form-control" v-model="username" placeholder="账号" autofocus required>
             </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="form-group">
             <!-- <label for="inputPassword3" class="col-sm-2 control-label">密码</label> -->
             <div class="col-sm-10 form-inline">
-            <span class="mui-icon mui-icon-locked"></span>
+            <span class="glyphicon glyphicon-lock"></span>
             <input type="password" class="form-control" v-model="password" placeholder="密码" required>
             </div>
             </div>
