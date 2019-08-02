@@ -8,7 +8,7 @@
                     <div class="caption">
                         <h3>Thumbnail label</h3>
                         <p>{{item.msg}}</p>
-                       <p><button class="btn btn-primary" @click="link(index)">好感 <span class="badge">{{item.likability}}</span></button> <a href="#" class="btn btn-default" role="button">详情</a></p>
+                       <p><button class="btn btn-primary" @click="link(index)">好感 <span class="badge">{{item.likability}}</span></button> <button class="btn btn-default" value="详情"></button></p>
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
                     </div>
                 </div>

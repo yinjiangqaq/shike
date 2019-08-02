@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header" style="margin:0;padding:0;height:200px;">
+          <div class="header" style="margin:0;padding:0;height:200px;">
             <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆 -->
             <img src="../images/logo2.png" alt="logo" >
         </div>
@@ -41,52 +41,21 @@
         </div>
 
         <div class="footer"></div>
-          <router-view></router-view> 
+     
     </div>
-
 </template>
-
 <script>
-import { Toast } from 'mint-ui';
-
-export default{
+export default {
     data(){
-        return{
-            username:'',
-            password:''
-        };
+return{
+
+};
     },
     methods:{
-        login(){
-            // if(this.username==''){
-            //     alert('账号不能为空');
-            //     // this.errorTip=true;
-            //     // this.errorTip="账号不能为空";
-            //     // return;
-            // }
-            // else if(this.password==''){
-            //     alert('密码不能为空');
-            //     // this.errorTip=true;
-            //     // this.errorTip="密码不能为空";
-            //     // return;
-            // }
-            // else{
-            //     Toast({
-            //     message:'登录成功',
-            //     duration:1000,
-            //     position:'top',
-            //     iconClass: 'glyphicon glyphicon-ok',
-            //     className:'mytoast',
-            // });
-            if((this.username!='')&&(this.password!='')){
-                this.$router.push({name:'main'})
-            }
-             this.$router.replace('/header');
-            }
-        }
-    }
-</script>
 
+    },
+}
+</script>
 <style lang="scss" scoped>
 .header{
     font-size:30px;
@@ -150,10 +119,3 @@ export default{
     background-color: #f7f7f7;
 }
 </style>
-
-
-
-
-
-
-
