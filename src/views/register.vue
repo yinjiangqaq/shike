@@ -7,17 +7,21 @@
 
         <div class="box">
             <div class="h2"></div>
-            <br>
-
             <form class="form-horizontal">    
             <div class="form-group">
             <div class="col-sm-10 form-inline">
             <span class="glyphicon glyphicon-user"></span>
-            <input type="text" id="id" class="form-control" v-model="username" placeholder="用户名或邮箱" autofocus required style="width:200px;">
+            <input type="text" id="id" class="form-control" v-model="userName" placeholder="用户名" autofocus required style="width:200px;">
             </div>
             </div>
             <div style="height:40px;width:100%"></div>
-
+             <div class="form-group">
+            <div class="col-sm-10 form-inline">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <input type="text" id="id" class="form-control" v-model="email" placeholder="邮箱" autofocus required style="width:200px;">
+            </div>
+            </div>
+            <div style="height:40px;width:100%"></div>
             <div class="form-group">
             <div class="col-sm-10 form-inline">
             <span class="glyphicon glyphicon-lock"></span>
@@ -27,15 +31,10 @@
             
              <div style="height:40px;width:100%"></div>
               <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;">
-               <router-link to="/header"> <button type="summit" class="btn btn-primary" style="width:200px;" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button></router-link>
+               <button type="summit" class="btn btn-primary" style="width:200px;" @click="register">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>
             </div>   
           
-             <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;margin-top:10px;" >
-            <router-link to="/forget" class="forgetPassword">忘记密码</router-link>
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <router-link to="/register" class="register">立即注册</router-link>
             
-             </div>
            
             </form>        
         </div>
@@ -45,14 +44,34 @@
     </div>
 </template>
 <script>
+
 export default {
     data(){
 return{
-
+    
+userName:'',
+password:'',
+email:'',
 };
     },
     methods:{
-
+register(){
+    var userName=this.userName;
+    var password=this.password;
+    var email=this.email;
+this.$http.post('/user',{userName,password,email},{emulateJSON:true}).then(function(res){
+  
+console.log("发送成功");
+    window.alert("发送成功");
+          this.$router.push('/header');
+    },function(res){
+        window.alert("发送失败");
+       
+        });
+   
+ //发送get请求
+               
+}
     },
 }
 </script>

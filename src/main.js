@@ -13,10 +13,14 @@ import $ from 'jquery';
 //导入bootstrap样式
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
-
-//引入mui的样式
-// import './lib/mui/css/mui.min.css'
-// import './lib/mui/css/icons-extra.css'
+import VueResource from 'vue-resource';
+Vue.use(VueResource)
+    //引入mui的样式
+    // import './lib/mui/css/mui.min.css'
+    // import './lib/mui/css/icons-extra.css'
+import Vuecookie from 'vue-cookie';
+Vue.use(Vuecookie);
+//将vue-cookie挂载在全局
 
 var vm = new Vue({
     el: '#app',

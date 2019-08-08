@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header" style="margin:0;padding:0;height:200px;">
-            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆 -->
+      
             <img src="../images/logo2.png" alt="logo" >
         </div>
 
@@ -27,7 +27,7 @@
             
              <div style="height:40px;width:100%"></div>
               <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;">
-               <router-link to="/header"> <button type="summit" class="btn btn-primary" style="width:200px;" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button></router-link>
+               <button type="summit" class="btn btn-primary" style="width:200px;" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
             </div>   
           
              <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;margin-top:10px;" >
@@ -58,18 +58,36 @@ export default{
     },
     methods:{
         login(){
-            // if(this.username==''){
-            //     alert('账号不能为空');
-            //     // this.errorTip=true;
-            //     // this.errorTip="账号不能为空";
-            //     // return;
-            // }
-            // else if(this.password==''){
-            //     alert('密码不能为空');
-            //     // this.errorTip=true;
-            //     // this.errorTip="密码不能为空";
-            //     // return;
-            // }
+var userName=this.username;
+ var password=this.password;       
+            if(userName==''){
+                alert('账号不能为空');
+                // this.errorTip=true;
+                // this.errorTip="账号不能为空";
+                // return;
+            }
+            else if(password==''){
+                alert('密码不能为空');
+                // this.errorTip=true;
+                // this.errorTip="密码不能为空";
+                // return;
+            }else{
+
+
+this.$http.post('/userLogin',{userName,password},{emulateJSON:true}).then(function(res){
+    window.alert("发送成功");
+    console.log(res.body);
+     if(res.body===true)
+    {
+     //this.$cookie.set('loginuser',res.body,1);
+    this.$router.push('/header');
+    }
+})
+
+
+
+
+            }
             // else{
             //     Toast({
             //     message:'登录成功',
@@ -78,10 +96,8 @@ export default{
             //     iconClass: 'glyphicon glyphicon-ok',
             //     className:'mytoast',
             // });
-            if((this.username!='')&&(this.password!='')){
-                this.$router.push({name:'main'})
-            }
-             this.$router.replace('/header');
+           
+            
             }
         }
     }

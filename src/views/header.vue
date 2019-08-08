@@ -1,62 +1,57 @@
 <template>
     <div>
-        <!-- rooterv-view区域页面变化区域 -->
-        <!-- <h1>这是一个app组件</h1>
-        <img src="src\images\帖子2.png" alt=""> -->
-         <div class="header" style="height: 200px;">
-            <img src="../images/logo2.png" alt="logo" style="position: absolute">
-            <div style="position: relative; height:80px;">
-                <nav>
-                    <ul class="nav  nav-pills navbar-right" id="jianju">
-                        <li>
-                            <router-link to="/homecontainer" style="color: white;text-decoration: none;font-size: 28px;font-family: Arial;font-weight: bold;">关于我们</router-link>
-                        </li>
-                        <li class="dropdown" role="presentation">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;font-size:28px;text-decoration:none;">
-                                <img src="../images/排行榜.png" alt="" class="img-circle" style="height: 40px;width:40px;">
-
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><router-link to="/homecontainer">我的主页</router-link ></li>
-                                <li><router-link  to="/homecontainer">设置</router-link ></li>
-                                 <li><router-link to="/">退出登录</router-link ></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <router-link to="/send" style="color: white;text-decoration: none;font-size: 28px;font-family: Arial;font-weight: bold;background-color: #FF6C92!important; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; padding:15px 20px;">发帖</router-link>
-                        </li>
+        <div class="header" >
+            <img src="../images/logo2.png" alt="" class="header_image">
+            <div class="subheader" display:inline>
+                <div class="blurheader">
+                </div>
+                <div class="logging-detail">
+                亲爱的&nbsp;{{userName}}&nbsp;欢迎访问食刻
+                </div>
+                <div class="aboutus">
+                    <router-link to="/header">关于我们</router-link>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <img src="../images/排行榜.png" alt=""  class="personphoto">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li class="content"><router-link to=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;我的主页</router-link></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="content"><router-link to=""><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;我的设置</router-link></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="content"><router-link to="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;退出登录</router-link></li>
                     </ul>
-                </nav>
-
+                </div>
+                <router-link to="/header/send">
+                    <div class="publishbutton">
+                        <h5>发布</h5>
+                    </div>
+                </router-link>
             </div>
-            <div style="position: absolute; width:100%;height:53px;margin-top:42px;">
-                <ul style="list-style: none;" id="sousuolan">
 
-                    <li style="height:53px;width:300px; ">
-                        <div class="input-group" style="height:43px;width:300px;">
-                            <input type="text" class="form-control" placeholder="请输入你想查找的零食" v-model="searchtext" style="padding:0;margin-top:4px;vertical-align:middle;"  autofocus required>
-                            <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" style="margin:0;padding: 0">
-                        <img src="../images/搜索.png">
-                            </button>
-                        </span>
-                        </div>
-                    </li>
-                    <!-- <input type="text" value="请输入你想查找的零食" class="form-control" style="color:#9B9A9B;height: 53px;width: 373px; "></li> -->
-                    <li style=" font-size:20px; font-family: Arial; width:130px;height:40px; border-radius: 15px;background-color: #E8F3FD;line-height:40px;font-size: 22px;margin-right: 10px;">
-                        <a href="" style="color: #FF6C92;text-decoration: none;">
-                            <span>
-                                <img src="../images/排行榜.png" alt="" style="padding-left:10px;">
-                        </span> 排行榜</a>
-                    </li>
-                </ul>
+            <router-link class="rank" to="">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true">&nbsp;排行榜</span>
+            </router-link>
+            
+            <div class="search">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px">
+                    </div>
+                    <a href="#">
+                        <button type="submit" class="glyphicon glyphicon-search">
+                        </button>
+                    </a>
+                </form>       
             </div>
+            
         </div>
-      
-      
-       
-        <router-view></router-view> 
+
+        <div class="display">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -64,30 +59,190 @@
 export default{
     data(){
         return{
-       
-           searchtext:'',
-           
+           userName:'', 
         };
     },
+    created(){
+this.getUsername();
+    },
     methods:{
+getUsername(){
 
+    this.userName=this.$cookie.get('user');
+}
     }
 }
+
 </script>
 
 <style lang="scss" scoped>
-#jianju li {
-    margin-right: 50px;
+
+.header{
+    position:absolute;
+    height:200px;
+    width:100%;
 }
 
-.nav li a:focus,
-nav li a:hover {
-    background-color: #89BEF7 !important;
+.subheader{
+    position:absolute;
+    height:30%;
+    width:100%;
+    // background-color: #fff;
 }
 
-#sousuolan li {
-    float: right;
-    margin-right: 40px;
+.blurheader{
+    
+    background-color: white;
+    opacity: 0.3;
+    height:100%;
+    width:100%;
 }
+
+.aboutus{
+    color:red;
+    font-size:18px;
+    margin-left:65%;
+    position:absolute;
+    top:25%;
+}
+.logging-detail{
+    color: black;
+    font-size: 15px;
+    margin-left: 40%;
+    top: 10%;
+    position: absolute;
+}
+a{
+    color:white;
+    font-weight:bold;
+    // opacity:1
+}
+
+.btn-default{
+    background: transparent;
+    border:none;
+    height:100%
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+.btn-default:hover{
+    background-color: rgb(161, 185, 231);
+}
+
+.dropdown{
+    position:absolute;
+    top:0%;
+    margin-left:74%;
+    height:100%;
+    .glyphicon{
+        color:rgb(230, 102, 166);
+    }
+}
+
+.personphoto{
+    // margin-left:78%;
+    height:35px;
+    width:35px;
+    // position:absolute;
+    top:20%;
+    margin-top:5px;
+    border-radius:17.5px;
+}
+
+.publishbutton{
+    position:absolute;
+    height:65px;
+    width:80px;
+    background-color: rgb(230, 102, 166);
+    margin-top:-4%;
+    margin-left:84%;
+    border-radius:0px 0px 10px 10px;
+    text-align: center;
+    h5{
+        color:white;
+        font-size:18px;
+        font-weight:bold;
+        margin-top:30%;
+    }
+}
+
+.publishbutton:hover{
+    background-color: rgb(236, 106, 182) ;
+}
+
+.header_image{
+    position:absolute;
+    margin-top:0px;
+    margin-left:0px;
+    border-radius:5px;
+}
+
+.input-group{
+    margin-left:70%;
+    margin-top:8.5%;
+}
+
+.input-group-btn{
+    background-color: #fff;
+    height:20px;
+}
+
+.rank{
+    position:absolute;
+    margin-top:8.8%;
+    margin-left:65%;
+    height:16%;
+    width:6%;
+    border-radius:4px;
+    background-color: rgba(255, 255, 255, 0.925);
+    
+    .glyphicon{
+        font-weight:bold;
+        margin-top:8px;
+        margin-left:7px;
+        color:rgb(248, 128, 188);
+    }
+}
+
+.rank:hover{
+    background-color: #fff;
+}
+
+.search{
+    position:absolute;
+    margin-top:8%;
+    margin-left:70.3%;
+    a{
+        bottom: rgba(255, 255, 255, 0.925);
+        color:rgb(88, 146, 221);
+    }
+    a:hover{
+        color:rgb(230, 102, 166);
+    }
+    .glyphicon{
+    top:3px;
+    height:35px;
+    width:30px;
+    border-radius:5px;
+    background-color: #fff;
+    border-color:#fff;
+    }
+    .form-control{
+        background-color: rgba(255, 255, 255, 0.925);
+    }
+    .form-control:hover{
+        background-color: #fff;
+    }
+}
+
+.display{
+    position:absolute;
+    margin-top:200px;
+}
+
 </style>
+
 
