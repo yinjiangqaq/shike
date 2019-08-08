@@ -4,7 +4,7 @@
         <div class="row" >
             <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index style="text-align:center;">
                 <div class="thumbnail">
-                    <img src="../images/帖子1.png" alt="..." style="height: 200px;width:242px;">
+                    <img src="../images/post1.png" alt="..." style="height: 200px;width:242px;">
                     <div class="caption">
                         <h3>Thumbnail label</h3>
                         <p>{{item.msg}}</p>

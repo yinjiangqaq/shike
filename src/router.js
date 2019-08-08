@@ -1,43 +1,74 @@
-import VueRouter from 'vue-router';
-import homecontainer from './components/homecontainer.vue';
-import header from './views/header.vue';
-import login from './views/login.vue';
-import send from './components/send.vue';
-import register from './views/register.vue';
-import forget from './views/forget.vue';
-import detail from './components/detail.vue';
+import VueRouter from 'vue-router'
 
+import homecontainer from './components/homeContainer.vue'
+import send from './components/send.vue'
+import personalhomepage from './components/personalHomepage.vue'
+import setting from './components/setting.vue'
+import rank from './components/rank.vue'
+
+import snack from './components/subcomponents/snack.vue'
+import myfavourite from './components/subcomponents/myfavourite.vue'
+import dynamic from './components/subcomponents/dynamic.vue'
+
+import click from './components/subcomponents/click_rate.vue'
+import like from './components/subcomponents/like_rate.vue'
+
+import test from './components/test.vue'
+
+import login from './components/views/login.vue'
+import register from './components/views/register.vue'
+import header from './components/views/header.vue'
+
+import detail from './components/detail.vue'
 //导入对应的路由组件
 
-var router = new VueRouter({
-    routes: [
+var router=new VueRouter({
+    routes:[
         //重定向
+        {path:'/',component:login},
+        {path:'/register',component:register},
+        {path:'/header',
+         component:header,
+         redirect:'/header/homecontainer',
+         children:[
+            {path:'homecontainer',component:homecontainer},
+            {path:'send',component:send},
+            {path:'personalhomepage',
+              component:personalhomepage,
+              redirect:'/header/personalhomepage/snack',
+              children:[
+                {path:'snack',component:snack},
+                {path:'myfavourite',component:myfavourite},
+                {path:'dynamic',component:dynamic}
+            ]},
+            {path:'setting',component:setting},
+            {path:'rank',
+             component:rank,
+             redirect:'/header/rank/click',
+             children:[
+                 {path:'click',component:click},
+                 {path:'like',component:like}
+             ]}
+         ]},
+         { path: '/detail/:id', component: detail },
 
-        {
-            path: '/',
-            component: login,
-
-        }, //写根目录的组件，这么些，打开网页，自动从app组件跳转到的是login组件，
-        { path: '/register', component: register },
-        { path: '/forget', component: forget },
-        { path: '/header', redirect: '/header/homecontainer' }, //让header组件直接跳到/header/homecontainer
-        {
-            path: '/header',
-            component: header,
-            children: [
-                { path: '/header/homecontainer', component: homecontainer },
-                { path: '/header/send', component: send },
-            ]
-        },
-
-        {
-            path: '/detail/:id',
-            component: detail,
-
-        },
-
-
-
+        // {path:'/personalhomepage',
+        //  component:personalhomepage,
+        //  redirect:'/personalhomepage/snack',
+        //  children:[
+        //     {path:'snack',component:snack},
+        //     {path:'myfavourite',component:myfavourite},
+        //     {path:'dynamic',component:dynamic}
+        //  ]},
+        // {path:'/setting',component:setting},
+        // {path:'/rank',
+        // component:rank,
+        // redirect:'/rank/click',
+        // children:[
+        //     {path:'click',component:click},
+        //     {path:'like',component:like}
+        // ]},
+        // {path:'/test',component:test}
     ]
 
 })

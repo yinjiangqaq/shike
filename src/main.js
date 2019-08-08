@@ -13,18 +13,23 @@ import $ from 'jquery';
 //导入bootstrap样式
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
-import VueResource from 'vue-resource';
-Vue.use(VueResource)
-    //引入mui的样式
-    // import './lib/mui/css/mui.min.css'
-    // import './lib/mui/css/icons-extra.css'
+
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css'; //要引入css文件
+Vue.use(Mint);
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+//引入前后端交互的vue-resource
+import Vueresource from 'vue-resource';
+Vue.use(Vueresource);
+//引入vue-cookie
 import Vuecookie from 'vue-cookie';
 Vue.use(Vuecookie);
-//将vue-cookie挂载在全局
-
 var vm = new Vue({
     el: '#app',
     $,
     render: c => c(app),
-    router //将路由对象挂载在vm实例上
+    router
 })

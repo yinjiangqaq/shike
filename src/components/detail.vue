@@ -2,12 +2,12 @@
     <div>
       <div class="header" style="margin:0;padding:0;height:200px;">
             <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆 -->
-            <img src="../images/logo2.png" alt="logo" >
+            <img src="../images/header.png" alt="logo" >
         </div>
         <div class="box">
             <div style="height:30px; width:100%;"></div>
             <div>
-          <img src="../images/排行榜.png" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:300px;">
+          <img src="../images/personphoto.jpg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:300px;">
           <span style="margin-left:360px;float:left;position:relative;">
               <ul style="list-style:none;padding:0; ">
                   <li style="font-size:16px;font-weight:bold;">{{username}}</li>
@@ -32,11 +32,11 @@
                         <p>{{text}}</p>
                        <hr>
                     </div>
-                     <img src="../images/帖子1.png" alt="..." style="height: 400px;width:400px;">
+                     <img src="../images/post1.png" alt="..." style="height: 400px;width:400px;">
                     <hr>
                    <div class="comment-area">
                      <comment-box :key="this.id"></comment-box>
-                     <comment-content></comment-content>
+                
                     </div> 
                     
                     
@@ -48,8 +48,7 @@
     </div>
 </template>
 <script>
-import comment from '../subcomponents/comment.vue';
-import commentContent from '../subcomponents/commentContent.vue';
+import comment from './subcomponents/comment.vue';
 export default {
   data(){
       return{
@@ -68,7 +67,6 @@ export default {
   components:{
       //用来注册子组件的节点，页面标签可以直接用comment-box
       "comment-box":comment,
-      "comment-content":commentContent,
   }  
 }
 </script>
