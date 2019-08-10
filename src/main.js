@@ -14,9 +14,9 @@ import $ from 'jquery';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
-import Mint from 'mint-ui';
-import 'mint-ui/lib/style.css'; //要引入css文件
-Vue.use(Mint);
+// import Mint from 'mint-ui';
+// import 'mint-ui/lib/style.css'; //要引入css文件
+// Vue.use(Mint);
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -27,6 +27,8 @@ Vue.use(Vueresource);
 //引入vue-cookie
 import Vuecookie from 'vue-cookie';
 Vue.use(Vuecookie);
+
+
 import moment from 'moment';
 //定义全局过滤器
 Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {

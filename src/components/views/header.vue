@@ -6,7 +6,7 @@
                 <div class="blurheader">
                 </div>
                  <div class="logging-detail">
-                亲爱的&nbsp;{{userName}}&nbsp;欢迎访问食刻
+                <!-- 亲爱的&nbsp;{{userName}}&nbsp;欢迎访问食刻 -->
                 </div>
                 <div class="aboutus">
                     <router-link to="">关于我们</router-link>

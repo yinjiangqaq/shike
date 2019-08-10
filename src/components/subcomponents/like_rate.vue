@@ -1,199 +1,102 @@
 <template>
 <div class="app">
     <ul>
-        <li>
+        <li v-for="item in postlist_click" :key="item.id">
             <div class="post_content">
                 <div class="rank">
-                    1
+                    {{item.rank}}
                 </div>
 
                 <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
+                    <img :src="item.img_url" alt="">
                 </div>
 
                 <div class="post_info">
                     <div class="post_title">
-                        标题
+                        {{item.title}}
                     </div>
                     <div class="post_content">
-                        帖子内容
+                        {{item.msg}}
                     </div>
                     <div class="post_comment">
                         <div class="author_name">
-                            作者名称
+                            {{item.author}}
                         </div>
                         <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comment}}
                         </div>
                         <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.like}}
                         </div>
                     </div>
                 </div>
             </div>
         </li>
-        <li>
-            <div class="post_content">
-                <div class="rank">
-                    2
-                </div>
-
-                <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
-                </div>
-                
-                <div class="post_info">
-                    <div class="post_title">
-                        标题
-                    </div>
-                    <div class="post_content">
-                        帖子内容
-                    </div>
-                    <div class="post_comment">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="post_content">
-                <div class="rank">
-                    3
-                </div>
-
-                <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
-                </div>
-                
-                <div class="post_info">
-                    <div class="post_title">
-                        标题
-                    </div>
-                    <div class="post_content">
-                        帖子内容
-                    </div>
-                    <div class="post_comment">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="post_content">
-                <div class="rank">
-                    3
-                </div>
-
-                <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
-                </div>
-                
-                <div class="post_info">
-                    <div class="post_title">
-                        标题
-                    </div>
-                    <div class="post_content">
-                        帖子内容
-                    </div>
-                    <div class="post_comment">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="post_content">
-                <div class="rank">
-                    4
-                </div>
-
-                <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
-                </div>
-                
-                <div class="post_info">
-                    <div class="post_title">
-                        标题
-                    </div>
-                    <div class="post_content">
-                        帖子内容
-                    </div>
-                    <div class="post_comment">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="post_content">
-                <div class="rank">
-                    5
-                </div>
-
-                <div class="post_image">
-                    <img src="https://avatars1.githubusercontent.com/u/275871?s=60&v=4" alt="">
-                </div>
-                
-                <div class="post_info">
-                    <div class="post_title">
-                        标题
-                    </div>
-                    <div class="post_content">
-                        帖子内容
-                    </div>
-                    <div class="post_comment">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-
     </ul>
 </div>
 </template>
 
 <script>
 export default {
+    data(){
+        return{
+            postlist_click: [{
+                id:'1',
+                rank:'1',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            }, {
+                id:'2',
+                rank:'2',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            },{
+                id:'3',
+                rank:'3',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            },{
+                id:'4',
+                rank:'4',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            },{
+                id:'5',
+                rank:'5',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            },{
+                id:'6',
+                rank:'6',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            } ]
+        }
+    }
     
 }
 </script>

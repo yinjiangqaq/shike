@@ -46,6 +46,13 @@
             </div>
             
                 <router-view></router-view>
+
+            <div class="block">
+            <el-pagination
+                layout="prev, pager, next"
+                :total="50">
+            </el-pagination>
+            </div>
         </div>
     </div>
 </template>
@@ -63,7 +70,7 @@ export default{
 <style lang="scss" scoped>
 .container{
   background-color: rgba(247, 243, 243, 0.87);
-  height:1100px;
+  height:1200px;
   width:1550px;
 }
 
@@ -77,7 +84,7 @@ export default{
 
 .app2{
   background-color: #fff;
-  height:800px;
+  height:900px;
   width:1150px;
   margin-left:180px;
   margin-top:50px;
@@ -164,10 +171,12 @@ export default{
   }
 }
 
-.v-enter-active,
-.v-leave-active{
-	transition:all 0.5s ease;
+.block{
+    margin-left:400px;
+    margin-top:30px;
 }
+
+
     
 </style>
 

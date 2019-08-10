@@ -21,7 +21,9 @@
         昵称
       </div>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="请输入昵称" aria-describedby="basic-addon1" style="border-radius:10px">
+        <!-- <input type="text" class="form-control" placeholder="请输入昵称" aria-describedby="basic-addon1" style="border-radius:10px"> -->
+        <el-input type="text" placeholder="请输入昵称" v-model="text" maxlength="10">
+        </el-input>
       </div>
     </div>
 
@@ -33,6 +35,10 @@
         <label><input type="radio" name="sex" value="男生">&nbsp;男生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    <label><input type="radio" name="sex" value="女生">&nbsp;女生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <label><input type="radio" name="sex" value="保密">&nbsp;保密</label>
+        
+        <!-- <el-radio v-model="radio" label="1" fill="#E666A6">男生</el-radio>
+        <el-radio v-model="radio" label="2" fill="#E666A6">女生</el-radio>
+        <el-radio v-model="radio" label="3" fill="#E666A6">保密</el-radio> -->
       </div>
     </div>
 
@@ -41,8 +47,11 @@
         个人简介
       </div>
       <div class="text">
-        <textarea rows="5" cols="40" name="text" value="text" placeholder=" 请输入个人简介" style="border-radius:10px">
-        </textarea>
+        <!-- <textarea rows="5" cols="40" name="text" value="text" placeholder=" 请输入个人简介" style="border-radius:10px">
+        </textarea> -->
+        <el-input type="textarea" placeholder="请输入个人简介" v-model="textarea" maxlength="120" show-word-limit rows=5>
+        </el-input>
+
       </div>
     </div>
 
@@ -51,12 +60,18 @@
         出生日期
       </div>
       <div class="date">
-        <input class="input" type="date"/>
+        <div class="block">
+          <el-date-picker
+            v-model="value1"
+            type="date"
+            placeholder="选择日期">
+          </el-date-picker>
+        </div>
       </div>
     </div>
 
     <div class="summit">
-      <div class="keep">
+      <div class="keep" @click="keep()">
         <div class="word">
           保存
         </div>
@@ -74,7 +89,11 @@
         return{
             userInfo:{
                 avatar:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            }
+            },
+            text:'',
+            textarea: '',
+            value1: '',
+            radio:'1'
         }
     },
     
@@ -92,6 +111,10 @@
             this.userInfo.avatar = res.result
         }
         reader.readAsDataURL(file)
+        },
+
+        keep(){
+          console.log("ok");
         }
     }
 }
@@ -231,9 +254,11 @@
     margin-left:200px;
     font-size:14px;
     border-radius:10px;
-    textarea{
-      background-color: rgba(240, 240, 240, 0.781);
-      border-color:rgb(212, 211, 211);
+    .el-textarea{
+      width:300px;
+      height:115px;
+      // background-color: rgba(240, 240, 240, 0.781);
+      // border-color:rgb(212, 211, 211);
     }
   }
 }

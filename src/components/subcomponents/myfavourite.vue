@@ -1,79 +1,26 @@
 <template>
     <ul>
-        <li>
+        <li v-for="item in postlist_snack" :key="item.id">
             <a href="#">
                 <div>
-                    <img src="https://avatars3.githubusercontent.com/u/40078051?s=40&v=4" alt="">
+                    <img :src="item.img_url" alt="">
                 </div>
                 <div class="info">
                     <div class="title">
-                        title
+                        {{item.title}}
                     </div>
                     <div class="content">
-                        文章内容
+                        {{item.msg}}
                     </div>
                     <div class="author_info">
                         <div class="author_name">
-                            作者名称
+                            {{item.author}}
                         </div>
                         <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comment}}
                         </div>
                         <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div>
-                    <img src="https://avatars3.githubusercontent.com/u/40078051?s=40&v=4" alt="">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        标题
-                    </div>
-                    <div class="content">
-                        文章内容
-                    </div>
-                    <div class="author_info">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
-                        </div>
-                    </div>
-                </div>
-
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div>
-                    <img src="https://avatars3.githubusercontent.com/u/40078051?s=40&v=4" alt="">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        标题
-                    </div>
-                    <div class="content">
-                        文章内容
-                    </div>
-                    <div class="author_info">
-                        <div class="author_name">
-                            作者名称
-                        </div>
-                        <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论数
-                        </div>
-                        <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;点赞量
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.like}}
                         </div>
                     </div>
                 </div>
@@ -84,7 +31,37 @@
 
 <script>
 export default {
-    
+    data(){
+        return{
+            postlist_snack:[{
+                id:'1',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
+            },
+            {
+                id:'2',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
+            },
+            {
+                id:'3',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
+            },]
+        }
+    }
 }
 </script>
 
