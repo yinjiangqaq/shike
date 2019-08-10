@@ -2,11 +2,11 @@
     <div class="homecontainer">
      <div style="height:30px; width:100%;"></div>
         <div class="row" >
-            <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index style="text-align:center;">
+            <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in postlist" :key=index style="text-align:center;">
                 <div class="thumbnail">
                     <img src="../images/post1.png" alt="..." style="height: 200px;width:242px;">
                     <div class="caption">
-                        <h3>Thumbnail label</h3>
+                        <h3>{{item.title}}</h3>
                         <p>{{item.msg}}</p>
                        <p><button class="btn btn-primary" @click="link(index)">好感 <span class="badge">{{item.likability}}</span></button> <router-link :to="'/detail/'+item.id"><button class="btn btn-default" >详情</button></router-link></p>
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
@@ -46,20 +46,24 @@ export default{
         return{
            msg: '',
            likability:'',
-            list: [{
+            postlist: [{
                 id:'1',
+                title:'标题',
                 msg: '这项小吃在淘宝上有卖',
                 likability:'0',
             }, {
                 id:'2',
+                title:'标题',
                 msg: '这项小吃在淘宝上有卖',
                 likability:'1',
             }, {
                 id:'3',
+                title:'标题',
                 msg: '这项小吃在淘宝上有卖',
                 likability:'2',
             }, {
                 id:'4',
+                 title:'标题',
                 msg: '这项小吃在淘宝上有卖',
                 likability:'3',
             }, ],

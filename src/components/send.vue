@@ -70,8 +70,12 @@ var file = document.getElementById("file").files[0];
     $("#result").attr('src',e.target.result);//把reader的dataurl放到img的src中
  
      }
+     },
 
 
+getTime(){
+  return new Date();
+}
 // let $target = e.target;
 // let file =$target.files[0];
 // var reader = new FileReader();
@@ -89,7 +93,7 @@ var file = document.getElementById("file").files[0];
         //     var result = document.getElementById("result");
         //     result.innerHTML = '<img src="' + this.result + '" alt=""/>';
           //  }
-    },
+    
 }
 }
 </script>

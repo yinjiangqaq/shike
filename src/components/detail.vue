@@ -7,11 +7,11 @@
         <div class="box">
             <div style="height:30px; width:100%;"></div>
             <div>
-          <img src="../images/personphoto.jpg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:300px;">
-          <span style="margin-left:360px;float:left;position:relative;">
+          <img src="../images/personphoto.jpg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:17%;">
+          <span style="margin-left:21%;float:left;position:relative;">
               <ul style="list-style:none;padding:0; ">
                   <li style="font-size:16px;font-weight:bold;">{{username}}</li>
-                  <li style="margin-top:8px;color:#808080">2019.5.9</li>
+                  <li style="margin-top:8px;color:#808080">{{postTime  | dateFormat}}</li>
               </ul>   
           </span>
          </div>
@@ -56,13 +56,19 @@ export default {
           username:'用户名',
           title:'标题',
           text:'正文',
+          postTime:'',
          
       };
   },
   //页面刷新就会调用的函数
- 
+ created(){
+this.getDate();
+ },
   methods:{
-
+getDate(){
+    var dt=new Date();
+    this.postTime=dt;
+}
   },
   components:{
       //用来注册子组件的节点，页面标签可以直接用comment-box

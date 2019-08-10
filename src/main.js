@@ -27,6 +27,11 @@ Vue.use(Vueresource);
 //引入vue-cookie
 import Vuecookie from 'vue-cookie';
 Vue.use(Vuecookie);
+import moment from 'moment';
+//定义全局过滤器
+Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+    return moment(dataStr).format(pattern);
+})
 var vm = new Vue({
     el: '#app',
     $,
