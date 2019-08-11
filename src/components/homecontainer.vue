@@ -7,14 +7,19 @@
                 <div class="thumbnail">
                     <img src="../images/post2.jpg" class="img-responsive" alt="Responsive image">
                     <div class="caption">
-                        <h3>{{item.title}}</h3>
+                        <div style="font-size:22px;margin-bottom:8px">{{item.title}}</div>
                         <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.msg}}</span>
                        
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
                     </div>
                 </div>
                 </router-link>
-                <p style="margin-left:240px;margin-top:-85px"><button class="btn btn-danger" @click="link(index)"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="badge">{{item.likability}}</span></button></p>
+                <!-- class="btn btn-danger" -->
+
+                <div style="display:flex;margin-left:270px;margin-top:-60px;" @click="link(index)" v-bind:class="[item.flg?'gray':'pink']">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:20px;padding-right:5px"></span>
+                    {{item.likability}}
+                </div>
             </div>
         </div>
         <div class="ending" style="text-align: center;margin-top:80px">
@@ -54,30 +59,56 @@ export default{
                 title:'标题',
                 msg: '作者名称',
                 likability:'0',
+                flg:true,
             }, {
                 id:'2',
                 title:'标题',
                 msg: '作者名称',
                 likability:'1',
+                flg:true,
             }, {
                 id:'3',
                 title:'标题',
                 msg: '作者名称',
                 likability:'2',
+                flg:true,
             }, {
                 id:'4',
                 title:'标题',
                 msg: '作者名称',
                 likability:'3',
+                flg:true,
             }, ],
         };
     },
     methods:{
-link(i){
-this.list[i].likability++;
-//把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
-}
-    }
+        link(i){
+            // this.list[i].likability++;
+            // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
+
+            //点赞和取消赞
+            this.list[i].changeColor=!this.list[i].changeColor;
+            if(this.list[i].flg){
+                this.list[i].likability++;
+                this.list[i].flg=false;
+            }else{
+                this.list[i].likability--;
+                this.list[i].flg=true;
+            }
+        }
+    },
+    //  mounted:function(){
+    //     $(".btn_heart").click(function(){
+    //         if(this.flg){
+    //             $(this).addClass("pink");
+    //             $(this).removeclass("grey");
+    //         }else{
+    //             $(this).addClass("grey");
+    //             $(this).removeclass("pink");
+    //         }
+            
+    // });
+    // }
 }
 </script>
 
@@ -109,6 +140,14 @@ nav li a:hover {
 
 a:hover{
     text-decoration: none;
+}
+
+.gray span{
+    color:rgb(161, 159, 159);
+}
+
+.pink span{
+    color:rgb(243, 129, 192);
 }
 </style>
 

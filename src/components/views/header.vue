@@ -8,9 +8,11 @@
                  <div class="logging-detail">
                 <!-- 亲爱的&nbsp;{{userName}}&nbsp;欢迎访问食刻 -->
                 </div>
-                <div class="aboutus">
-                    <router-link to="">关于我们</router-link>
-                </div>
+                <router-link to="/header">
+                    <div class="aboutus">
+                        首页
+                    </div>
+                </router-link>
                 <div class="dropdown">
                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <img src="../../images/personphoto.jpg" alt=""  class="personphoto">
@@ -98,11 +100,17 @@ getUsername(){
 }
 
 .aboutus{
-    color:red;
     font-size:18px;
-    margin-left:65%;
+    margin-left:66%;
     position:absolute;
     top:25%;
+    text-decoration: none;
+    router-link{
+        text-decoration: none;
+        router-link:active{
+            color:#fff;
+        }
+    }
 }
 .logging-detail{
     color: black;
