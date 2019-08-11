@@ -19,7 +19,7 @@
                                 {{item.content}}
                             </div>
                             <div class="res-body">
-                                {{reponseText}}
+                                {{item.reponseText}}
                             </div>
                         </div> 
                     </div>
@@ -38,6 +38,7 @@ export default {
             commentText:'',
             type:'0',
             name:'',
+           
 comments:[
     {   
         id:'1',
