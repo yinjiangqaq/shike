@@ -38,10 +38,10 @@
             <div class="search">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px">
+                        <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px" v-model="searchText">
                     </div>
                     <a href="#">
-                        <button type="submit" class="glyphicon glyphicon-search">
+                        <button type="submit" class="glyphicon glyphicon-search" @click="search">
                         </button>
                     </a>
                 </form>       
@@ -60,7 +60,8 @@ export default {
     data(){
         return{
             userName:'',
-            backgroundImage:'url('+require('../../images/header.png')+')'
+            backgroundImage:'url('+require('../../images/header.png')+')',
+            searchText:'',
         }
     },
        created(){
@@ -70,6 +71,11 @@ this.getUsername();
 getUsername(){
 
     this.userName=this.$cookie.get('user');
+},
+search(){
+this.$http.post('/',{searchText},{emulateJSON:true}).then(function(res){
+    this.searchText='';
+})   
 }
     }
 }

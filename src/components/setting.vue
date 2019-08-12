@@ -1,5 +1,6 @@
 <template>
 <div class="container">
+   <form action="/post" enctype="multipart/form-data" method="post">
   <div class="app">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
@@ -70,15 +71,16 @@
       </div>
     </div>
 
-    <div class="summit">
-      <div class="keep" @click="keep()">
-        <div class="word">
+    <div class="summit" >
+      <div class="keep" @click="keep()" style="text-align:center;line-height:40px;">
+        <div class="word" style="margin:0; cursor: pointer;">
           保存
         </div>
       </div>
     </div>
 
  </div>
+   </form>
 </div>
   
 </template>
@@ -291,6 +293,7 @@
   width: 900px;
   margin-left:290px;
   margin-top:10px;
+ 
   
   .keep{
     height: 40px;

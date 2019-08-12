@@ -75,7 +75,7 @@ var userName=this.username;
 
 
 this.$http.post('/userLogin',{userName,password},{emulateJSON:true}).then(function(res){
-    window.alert("发送成功");
+    window.alert("登录成功");
     console.log(res.body);
      if(res.body===true)
     {
