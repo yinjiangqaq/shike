@@ -26,7 +26,7 @@
             
              <div style="height:40px;width:100%"></div>
               <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;">
-               <button type="summit" class="btn btn-primary" style="width:200px;" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+               <el-button :plain="true" style="width:200px;" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
             </div>   
           
              <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;margin-top:10px;" >
@@ -60,16 +60,26 @@ export default{
 var userName=this.username;
  var password=this.password;       
             if(userName==''){
-                alert('账号不能为空');
+                // alert('账号不能为空');
                 // this.errorTip=true;
                 // this.errorTip="账号不能为空";
                 // return;
+                this.$message({
+                    showClose: true,
+                    message: '账号不能为空',
+                    type: 'error'
+                })
             }
             else if(password==''){
-                alert('密码不能为空');
+                // alert('密码不能为空');
                 // this.errorTip=true;
                 // this.errorTip="密码不能为空";
                 // return;
+                this.$message({
+                    showClose: true,
+                    message: '密码不能为空',
+                    type: 'error'
+                })
             }else{
 
 

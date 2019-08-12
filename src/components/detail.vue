@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-    
     <div class="header" style="margin:0;padding:0;height:200px;">
         <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎登陆 -->
         <img src="../images/header.png" alt="logo" >
@@ -29,8 +28,20 @@
                     <hr>
                     <p>{{text}}</p>
                     <hr>
-                    <div class="comment-area">
-                        <comment-box :key="this.id"></comment-box>
+                    <div class="like_comment">
+                        <div style="display:flex;margin-left:270px;margin-top:-60px;" @click="link()" v-bind:class="[flg1?'gray':'pink']">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:20px;padding-right:5px;height:20px"></span>
+                            {{likability}}
+                        </div>
+                        <div class="comment" @click="change()" >
+                            <i class="el-icon-chat-dot-round"></i>
+                            {{comment_amount}}
+                        </div>
+                    </div>
+                    <div v-bind:class="[flg2?'noshow':'show']">
+                        <p>
+                            <comment-box :key="this.id"></comment-box>
+                        </p>
                     </div> 
                 </div>
             </div>
@@ -50,6 +61,10 @@ export default {
         title:'标题',
         text:'正文',
         postTime:'',
+        likability:'0',
+        comment_amount:'2',
+        flg1:true,
+        flg2:true
       };
   },
   //页面刷新就会调用的函数
@@ -58,10 +73,30 @@ export default {
     this.getDate();
     },
 
-  methods:{
+    methods:{
     getDate(){
         var dt=new Date();
         this.postTime=dt;
+    },
+    link(){
+            // this.list[i].likability++;
+            // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
+
+            //点赞和取消赞
+            if(this.flg1){
+                this.likability++;
+                this.flg1=false;
+            }else{
+                this.likability--;
+                this.flg1=true;
+            }
+        },
+    change(){
+        if(this.flg2){
+            this.flg2=false;
+        }else{
+            this.flg2=true;
+        }
     }
   },
   components:{
@@ -72,15 +107,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container{
-  background-color: rgba(247, 243, 243, 0.87);
-  height:1300px;
+  background: #fff;
+  height:1000px;
   width:1550px;
   padding:0px;
 }
 
 .app{
-  background-color: #fff;
-  height:1100px;
+  height:800px;
   width:1150px;
   margin-left:180px;
 }
@@ -96,5 +130,47 @@ export default {
 
 hr{
  border-top: 3px solid #eee;
+}
+
+.gray span{
+    color:rgb(161, 159, 159);
+}
+
+.pink span{
+    color:rgb(243, 129, 192);
+}
+
+.like_comment{
+    display:flex;
+    margin-top:80px;
+    margin-left:400px;
+}
+
+.comment{
+    display:flex;
+    margin-top:-60px;
+    margin-left:20px;
+    margin-right:5px;
+    
+    i{
+        font-size:20px;
+        color:rgb(161, 159, 159);
+    }
+
+    i:hover{
+        color:rgb(243, 129, 192);
+    }
+}
+
+.comment:hover{
+    color:rgb(243, 129, 192);
+}
+
+.show p{
+    display:block;
+}
+
+.noshow p{
+    display:none;
 }
 </style>

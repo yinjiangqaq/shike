@@ -31,7 +31,7 @@
             
              <div style="height:40px;width:100%"></div>
               <div  class="col-sm-10 form-inline" style="text-align:center;margin-left:105px;">
-               <button type="summit" class="btn btn-primary" style="width:200px;" @click="register">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+               <el-button :plain="true" style="width:200px;" @click="register">注&nbsp;&nbsp;&nbsp;&nbsp;册</el-button>
             </div>   
           
             
@@ -59,9 +59,30 @@ register(){
     var userName=this.userName;
     var password=this.password;
     var email=this.email;
-this.$http.post('/user',{userName,password,email},{emulateJSON:true}).then(function(res){
+
+    if(userName==''){
+        this.$message({
+                    showClose: true,
+                    message: '账号不能为空',
+                    type: 'error'
+                })
+    }else if(email==''){
+        this.$message({
+                    showClose: true,
+                    message: '邮件不能为空',
+                    type: 'error'
+                })
+    }else if(password==''){
+        this.$message({
+                    showClose: true,
+                    message: '密码不能为空',
+                    type: 'error'
+                })
+    }
+
+    this.$http.post('/user',{userName,password,email},{emulateJSON:true}).then(function(res){
   
-console.log("发送成功");
+    console.log("发送成功");
     window.alert("发送成功");
           this.$router.push('/header');
     },function(res){
