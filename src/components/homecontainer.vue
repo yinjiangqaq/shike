@@ -30,11 +30,11 @@
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <li @click="page(0)"><a href="#">1</a></li>
+                    <li @click="page(1)"><a href="#">2</a></li>
+                    <li @click="page(2)"><a href="#">3</a></li>
+                    <li @click="page(3)"><a href="#">4</a></li>
+                    <li @click="page(4)"><a href="#">5</a></li>
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
@@ -54,31 +54,34 @@ export default{
         return{
            msg: '',
            likability:'',
-            list: [{
-                id:'1',
-                title:'标题',
-                msg: '作者名称',
-                likability:'0',
-                flg:true,
-            }, {
-                id:'2',
-                title:'标题',
-                msg: '作者名称',
-                likability:'1',
-                flg:true,
-            }, {
-                id:'3',
-                title:'标题',
-                msg: '作者名称',
-                likability:'2',
-                flg:true,
-            }, {
-                id:'4',
-                title:'标题',
-                msg: '作者名称',
-                likability:'3',
-                flg:true,
-            }, ],
+            list: [],
+            //     {
+            //     id:'1',
+            //     title:'标题',
+            //     msg: '作者名称',
+            //     likability:'0',
+            //     flg:true,
+            // }, {
+            //     id:'2',
+            //     title:'标题',
+            //     msg: '作者名称',
+            //     likability:'1',
+            //     flg:true,
+            // }, {
+            //     id:'3',
+            //     title:'标题',
+            //     msg: '作者名称',
+            //     likability:'2',
+            //     flg:true,
+            // }, {
+            //     id:'4',
+            //     title:'标题',
+            //     msg: '作者名称',
+            //     likability:'3',
+            //     flg:true,
+            // }, 
+           
+           
         };
     },
     methods:{
@@ -95,7 +98,12 @@ export default{
                 this.list[i].likability--;
                 this.list[i].flg=true;
             }
-        }
+        },
+        page(i){
+this.$http.get('/posts/'+i).then(function(res){
+    console.log(res.body);
+this.list=res.body;
+         }) },
     },
     //  mounted:function(){
     //     $(".btn_heart").click(function(){

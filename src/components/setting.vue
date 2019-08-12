@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-   <form action="/post" enctype="multipart/form-data" method="post">
   <div class="app">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
@@ -71,16 +70,15 @@
       </div>
     </div>
 
-    <div class="summit" >
-      <div class="keep" @click="keep()" style="text-align:center;line-height:40px;">
-        <div class="word" style="margin:0; cursor: pointer;">
+    <div class="summit">
+      <div class="keep" @click="keep()">
+        <div class="word">
           保存
         </div>
       </div>
     </div>
 
  </div>
-   </form>
 </div>
   
 </template>
@@ -114,7 +112,6 @@
         }
         reader.readAsDataURL(file)
         },
-
         keep(){
           console.log("ok");
         }
@@ -128,14 +125,12 @@
   height:1100px;
   width:1550px;
 }
-
 .app{
   background-color: #fff;
   height:1100px;
   width:1150px;
   margin-left:180px;
 }
-
 .title{
   font-size:30px;
   padding-top:20px;
@@ -145,7 +140,6 @@
   // border-bottom: 2px solid #f7f7f7;
   color:#797878;
 }
-
 .item_bock {
   display: flex;
   align-items: center;
@@ -190,11 +184,9 @@
   background-color: #fff;
   border-color:rgb(230, 102, 166);
 }
-
 .caption:hover{
   background-color: rgba(245, 228, 235, 0.5);
 }
-
 .name_bock{
   display: flex;
   align-items: center;
@@ -214,7 +206,6 @@
     }
   }
 }
-
 .gender_bock{
   display: flex;
   align-items: center;
@@ -222,13 +213,11 @@
   width: 900px;
   margin-left:100px;
   border-bottom: 2px solid #f7f7f7;
-
   .gender{
     margin-left:190px;
     font-size:20px;
     color:#797878;
   }
-
   .radio_button{
     margin-left:240px;
     font-size:16px;
@@ -237,7 +226,6 @@
     }
   }
 }
-
 .person_profile{
   display: flex;
   align-items: center;
@@ -245,13 +233,11 @@
   width: 900px;
   margin-left:100px;
   border-bottom: 2px solid #f7f7f7;
-
   .profile{
     margin-left:190px;
     font-size:20px;
     color:#797878;
   }
-
   .text{
     margin-left:200px;
     font-size:14px;
@@ -264,20 +250,17 @@
     }
   }
 }
-
 .birthday_bock{
   display: flex;
   align-items: center;
   height:180px;
   width: 900px;
   margin-left:100px;
-
   .birthday{
     margin-left:190px;
     font-size:20px;
     color:#797878;
   }
-
   .date{
     margin-left:200px;
     font-size:14px;
@@ -287,13 +270,11 @@
     }
   }
 }
-
 .summit{
   height:160px;
   width: 900px;
   margin-left:290px;
   margin-top:10px;
- 
   
   .keep{
     height: 40px;
@@ -311,5 +292,4 @@
     }
   }
 }
-
 </style>
