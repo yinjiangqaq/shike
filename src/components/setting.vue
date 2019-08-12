@@ -1,6 +1,7 @@
 <template>
 <div class="container">
   <div class="app">
+    <form action="/user" enctype="multipart/form-data" method="put">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
     </div>
@@ -13,7 +14,7 @@
       <div class="setting_right" @click.stop="uploadHeadImg">
         <button class="caption">更改头像</button>
       </div>
-      <input type="file" accept="image/*" @change="handleFile" class="hiddenInput"/>
+      <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" name="headPortrait" />
     </div>
 
     <div class="name_bock">
@@ -22,7 +23,7 @@
       </div>
       <div class="input-group">
         <!-- <input type="text" class="form-control" placeholder="请输入昵称" aria-describedby="basic-addon1" style="border-radius:10px"> -->
-        <el-input type="text" placeholder="请输入昵称" v-model="text" maxlength="10">
+        <el-input type="text" placeholder="请输入昵称" v-model="text" maxlength="10" name="userName">
         </el-input>
       </div>
     </div>
@@ -32,9 +33,9 @@
         性别
       </div>
       <div class="radio_button">
-        <label><input type="radio" name="sex" value="男生">&nbsp;男生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    <label><input type="radio" name="sex" value="女生">&nbsp;女生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label><input type="radio" name="sex" value="保密">&nbsp;保密</label>
+        <label><input type="radio" name="gender" value="male" >&nbsp;男生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <label><input type="radio" name="gender" value="female">&nbsp;女生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><input type="radio" name="gender" value="secret">&nbsp;保密</label>
         
         <!-- <el-radio v-model="radio" label="1" fill="#E666A6">男生</el-radio>
         <el-radio v-model="radio" label="2" fill="#E666A6">女生</el-radio>
@@ -49,7 +50,7 @@
       <div class="text">
         <!-- <textarea rows="5" cols="40" name="text" value="text" placeholder=" 请输入个人简介" style="border-radius:10px">
         </textarea> -->
-        <el-input type="textarea" placeholder="请输入个人简介" v-model="textarea" maxlength="120" show-word-limit rows=5>
+        <el-input type="textarea" placeholder="请输入个人简介" v-model="textarea" maxlength="120" show-word-limit rows=5 name="personalProfile">
         </el-input>
 
       </div>
@@ -64,21 +65,22 @@
           <el-date-picker
             v-model="value1"
             type="date"
-            placeholder="选择日期">
+            placeholder="选择日期"
+            name="birthday">
           </el-date-picker>
         </div>
       </div>
     </div>
 
     <div class="summit">
-      <div class="keep" @click="keep()">
+      <div class="keep">
         <div class="word">
-          保存
+          <input type="summit" class="btn btn-default" value="保存">
         </div>
       </div>
     </div>
-
- </div>
+</form>
+</div>
 </div>
   
 </template>
@@ -277,18 +279,18 @@
   margin-top:10px;
   
   .keep{
-    height: 40px;
-    width:100px;
-    color: #fff;
-    font-size: 18px;
-    border-radius:18px;
-    background-color: rgb(230, 102, 166);
-    // border-color:rgb(230, 102, 166);
-    border-style:solid;
+    // height: 40px;
+    // width:100px;
+    // color: #fff;
+    // font-size: 18px;
+    // border-radius:18px;
+    // background-color: rgb(230, 102, 166);
+    // // border-color:rgb(230, 102, 166);
+    // border-style:solid;
     
     .word{
-      margin-left:20px;
-      margin-top:5px;
+      // margin-left:20px;
+      // margin-top:5px;
     }
   }
 }
