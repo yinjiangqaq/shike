@@ -55,33 +55,6 @@ export default{
            msg: '',
            likability:'',
             list: [],
-            //     {
-            //     id:'1',
-            //     title:'标题',
-            //     msg: '作者名称',
-            //     likability:'0',
-            //     flg:true,
-            // }, {
-            //     id:'2',
-            //     title:'标题',
-            //     msg: '作者名称',
-            //     likability:'1',
-            //     flg:true,
-            // }, {
-            //     id:'3',
-            //     title:'标题',
-            //     msg: '作者名称',
-            //     likability:'2',
-            //     flg:true,
-            // }, {
-            //     id:'4',
-            //     title:'标题',
-            //     msg: '作者名称',
-            //     likability:'3',
-            //     flg:true,
-            // }, 
-           
-           
         };
     },
     methods:{
@@ -100,10 +73,9 @@ export default{
             }
         },
         page(i){
-this.$http.get('/posts/'+i).then(function(res){
-    console.log(res.body);
-this.list=res.body;
-         }) },
+           this.$http.get('/posts/'+i,{userName,password},{emulateJSON:true}).then(function(res){
+
+        })
     },
     //  mounted:function(){
     //     $(".btn_heart").click(function(){
@@ -117,6 +89,7 @@ this.list=res.body;
             
     // });
     // }
+}
 }
 </script>
 

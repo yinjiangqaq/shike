@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <form action="/post" enctype="multipart/form-data" method="post">
+  <form action="/post" enctype="multipart/form-data" method="post" @submit.prevent="submit($event)">
   <div class="send">
     <div style="height:100px;width:100%;" class="title">
       <svg t="1565246592302" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2530" width="30" height="30"><path d="M817.657468 775.758196 454.710202 664.079674l362.949312-418.788062-474.627834 418.788062L63.836911 552.403199 957.255877 77.775364 817.657468 775.758196 817.657468 775.758196zM454.710202 943.275467 454.710202 747.839333l111.673405 55.838749L454.710202 943.275467 454.710202 943.275467z" p-id="2531" fill="#797878"></path></svg>
@@ -98,7 +98,14 @@ formatDate(date)
     this.date= ''+ y + '-' + m + '-' + d+' '+h+':'+minute+':'+ second; 
 
 },
-
+submit: function(e){
+var formData =new FormData(e.target);
+this.$http.post('/post',formData).then(function(res){
+  this.$router.push('/header');
+},function(res){
+  window.alert("失败");
+})
+}
 }
 }
 </script>
