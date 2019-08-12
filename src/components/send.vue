@@ -98,6 +98,7 @@ formatDate(date)
     this.date= ''+ y + '-' + m + '-' + d+' '+h+':'+minute+':'+ second; 
 
 },
+//实现提交表单后跳转
 submit: function(e){
 var formData =new FormData(e.target);
 this.$http.post('/post',formData).then(function(res){

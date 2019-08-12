@@ -73,7 +73,7 @@ export default{
             }
         },
         page(i){
-           this.$http.get('/posts/'+i,{userName,password},{emulateJSON:true}).then(function(res){
+           this.$http.get('/posts/'+i).then(function(res){
 
         })
     },
