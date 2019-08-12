@@ -61,11 +61,11 @@ this.formatDate(new Date());
 console.log(this.date);
     },
     methods:{
-//     load(){
-//        $("#file").click();
-//         //因为input.file的样式不好看，所以通过button来控制input.file的点击，然后Input.file display:none
+    load(){
+       $("#file").click();
+        //因为input.file的样式不好看，所以通过button来控制input.file的点击，然后Input.file display:none
 
-//           },
+          },
     
       fileinput(e){
       
