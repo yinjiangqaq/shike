@@ -1,10 +1,10 @@
 <template>
     <div>
-        <b v-if="type==='1'">你回复&nbsp;{{name}}</b>
+            <b v-if="type==='1'">你回复&nbsp;{{name}}</b>
         <b v-else></b>
-   <textarea placeholder="请输入你的评论，最多评论120字" maxlength="120" style="width:100%;height:100px;" v-model="commentText" id="comment-box"></textarea>
-   <div style="height:10px;"></div>
-   <div class="controls">
+        <textarea placeholder="请输入你的评论，最多评论120字" maxlength="120" style="width:100%;height:100px;" v-model="commentText" id="comment-box"></textarea>
+        <div style="height:10px;"></div>
+        <div class="controls">
         <div class="form-actions" style="margin-left:82%;">
             <input class="btn btn-info" id="submit_btn" type="submit" name="submit" value="提交"/>
              <button class="btn" @click="cancelComment">取消</button>
@@ -24,10 +24,6 @@
                         </div> 
                     </div>
          </div>
-    
-    
-
-    
     </div>
 </template>
 <script>
@@ -80,6 +76,7 @@ cancelComment(){
 }
 </script>
 <style lang="scss" scoped>
+
 hr{
         border-top: 3px solid #ccc;
 }
