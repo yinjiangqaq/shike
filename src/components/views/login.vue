@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="header" style="margin:0;padding:0;height:200px;">
-      
             <img src="../../images/header.png" alt="logo" >
         </div>
 
@@ -75,7 +74,7 @@ var userName=this.username;
 
 
 this.$http.post('/userLogin',{userName,password},{emulateJSON:true}).then(function(res){
-    window.alert("登录成功");
+    window.alert("发送成功");
     console.log(res.body);
      if(res.body===true)
     {
