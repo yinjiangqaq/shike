@@ -8,7 +8,7 @@
                     <img src="../images/post2.jpg" class="img-responsive" alt="Responsive image">
                     <div class="caption">
                         <div style="font-size:22px;margin-bottom:8px">{{item.title}}</div>
-                        <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.msg}}</span>
+                        <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item}}</span>
                        
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
                     </div>
@@ -74,7 +74,10 @@ export default{
         },
         page(i){
            this.$http.get('/posts/'+i).then(function(res){
-
+               console.log(res.body);
+               this.list=res.body;
+        },function(res){
+            window.alert("失败");
         })
     },
     //  mounted:function(){
