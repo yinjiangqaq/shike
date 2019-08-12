@@ -14,7 +14,7 @@
       <div class="setting_right" @click.stop="uploadHeadImg">
         <button class="caption">更改头像</button>
       </div>
-      <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" name="headPortrait" />
+      <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" name="putHeadPortrait" />
     </div>
 
     <div class="name_bock">
@@ -66,7 +66,7 @@
             v-model="value1"
             type="date"
             placeholder="选择日期"
-            name="birthday">
+            name="putBirthday">
           </el-date-picker>
         </div>
       </div>
