@@ -1,18 +1,19 @@
 <template>
 <div class="container">
   <div class="app">
-    <form action="/user" enctype="multipart/form-data" method="put">
+    <form action="/user" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="_method" value="put">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
     </div>
 
     <div class="item_bock head_p">
       <div class="head_img">
-        <img :src="userInfo.avatar"/>
+        <img src="https://avatars3.githubusercontent.com/u/40078051?s=40&v=4" id="result"/>
         <!-- <--图片地址动态绑定-->
       </div>
-      <div class="setting_right" @click.stop="uploadHeadImg">
-        <button class="caption">更改头像</button>
+      <div class="setting_right">
+        <input type="button" class="caption" value="更改头像"  @click.stop="uploadHeadImg">
       </div>
       <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" name="putHeadPortrait" />
     </div>
@@ -75,7 +76,7 @@
     <div class="summit">
       <div class="keep">
         <div class="word">
-          <input type="summit" class="btn btn-default" value="保存">
+          <input type="submit" class="btn btn-default" value="保存">
         </div>
       </div>
     </div>
@@ -101,7 +102,8 @@
     
     methods:{
         uploadHeadImg: function () {
-            this.$el.querySelector('.hiddenInput').click()
+          $(".hiddenInput").click();
+            // this.$el.querySelector('.hiddenInput').click()
         },
     // 将头像显示
         handleFile: function (e) {
@@ -109,14 +111,13 @@
         let file = $target.files[0]
         var reader = new FileReader()
         reader.onload = (data) => {
+            
             let res = data.target || data.srcElement
-            this.userInfo.avatar = res.result
+            // this.userInfo.avatar = res.result
+            $("#result").attr('src',res.result);
         }
         reader.readAsDataURL(file)
         },
-        keep(){
-          console.log("ok");
-        }
     }
 }
 </script>
