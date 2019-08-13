@@ -5,10 +5,10 @@
             <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index>
                 <router-link :to="'/detail/'+item.id">
                 <div class="thumbnail">
-                    <img src="../images/post2.jpg" class="img-responsive" alt="Responsive image">
+                    <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
                     <div class="caption">
                         <div style="font-size:22px;margin-bottom:8px">{{item.title}}</div>
-                        <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item}}</span>
+                        <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.author.userName}}</span>
                        
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
                     </div>
@@ -18,14 +18,14 @@
 
                 <div style="display:flex;margin-left:270px;margin-top:-60px;" @click="link(index)" v-bind:class="[item.flg?'gray':'pink']">
                     <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:20px;padding-right:5px"></span>
-                    {{item.likability}}
+                    {{item.likeNum}}
                 </div>
             </div>
         </div>
         <div class="ending" style="text-align: center;margin-top:80px">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <li>
+                    <li @click="down">
                         <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
@@ -35,7 +35,7 @@
                     <li @click="page(2)"><a href="#">3</a></li>
                     <li @click="page(3)"><a href="#">4</a></li>
                     <li @click="page(4)"><a href="#">5</a></li>
-                    <li>
+                    <li @click="up">
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
@@ -53,9 +53,24 @@ export default{
     data(){
         return{
            msg: '',
-           likability:'',
+          likeNum:'',
             list: [],
+           
         };
+    },
+    created(){
+  this.$http.get('/posts/'+0).then(function(res){
+      console.log(res.body);
+    this.list=res.body;
+     this.$cookie.set('pageNum',0,1);
+    // var bytes =new Uint8Array(list[0].image);
+    // var blob =new Blob([bytes],{type:"image/png"});
+    // var url =new URL.createObjectURL(blob);
+    // this.imgurl=url;
+    
+        },function(res){
+        window.alert("失败");
+  })
     },
     methods:{
         link(i){
@@ -65,10 +80,10 @@ export default{
             //点赞和取消赞
             this.list[i].changeColor=!this.list[i].changeColor;
             if(this.list[i].flg){
-                this.list[i].likability++;
+                this.list[i].likeNum++;
                 this.list[i].flg=false;
             }else{
-                this.list[i].likability--;
+                this.list[i].likeNum--;
                 this.list[i].flg=true;
             }
         },
@@ -76,10 +91,43 @@ export default{
            this.$http.get('/posts/'+i).then(function(res){
                console.log(res.body);
                this.list=res.body;
+            this.$cookie.set('pageNum',i,1);
         },function(res){
             window.alert("失败");
         })
     },
+    down(){
+var i=this.$cookie.get('pageNum');
+if(i>0)
+{
+   this.$http.get('/posts/'+(i-1)).then(function(res){
+               console.log(res.body);
+               this.list=res.body;
+                this.$cookie.set('pageNum',i-1,1);
+   },function(res){
+            window.alert("失败");
+        })
+}else{
+     this.$http.get('/posts/'+0).then(function(res){
+      console.log(res.body);
+    this.list=res.body;
+     },function(res){
+        window.alert("失败");
+  })
+}
+    },
+    up(){
+       var i=this.$cookie.get('pageNum');
+      var j= i+1;
+       this.$http.get('/posts/'+j).then(function(res){
+               console.log(res.body);
+               this.list=res.body;
+                this.$cookie.set('pageNum',j,1);
+   },function(res){
+            window.alert("失败");
+        })
+    }
+    
     //  mounted:function(){
     //     $(".btn_heart").click(function(){
     //         if(this.flg){
