@@ -8,7 +8,7 @@
                     <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
                     <div class="caption">
                         <div style="font-size:22px;margin-bottom:8px">{{item.title}}</div>
-                        <span><img src="../images/personphoto.jpg" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.author.userName}}</span>
+                        <span><img :src="item.author.headPortrait" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.author.userName}}</span>
                        
                         <!-- <p><a href="" class="btn btn-primary" role="button" @click="uplikabilty">好感  <span class="badge">{{item.likability}}</span></a> <a href="#" class="btn btn-default" role="button">详情</a></p> -->
                     </div>
