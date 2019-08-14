@@ -118,11 +118,12 @@ if(i>0)
     },
     up(){
        var i=this.$cookie.get('pageNum');
-      var j= i+1;
-       this.$http.get('/posts/'+j).then(function(res){
+      var j= parseInt(i);
+      
+       this.$http.get('/posts/'+(j+1)).then(function(res){
                console.log(res.body);
                this.list=res.body;
-                this.$cookie.set('pageNum',j,1);
+                this.$cookie.set('pageNum',(j+1),1);
    },function(res){
             window.alert("失败");
         })
