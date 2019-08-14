@@ -3,7 +3,7 @@
      <div style="height:30px; width:100%;"></div>
         <div class="row" >
             <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index>
-                <router-link :to="'/detail/'+item.id">
+                <router-link :to="'/detail/'+item.id" >
                 <div class="thumbnail">
                     <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
                     <div class="caption">
@@ -16,7 +16,7 @@
                 </router-link>
                 <!-- class="btn btn-danger" -->
 
-                <div style="display:flex;margin-left:270px;margin-top:-60px;" @click="link(index)" v-bind:class="[item.flg?'gray':'pink']">
+                <div style="display:flex;margin-left:270px;margin-top:-60px;"  class="pink">
                     <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:20px;padding-right:5px"></span>
                     {{item.likeNum}}
                 </div>
@@ -73,20 +73,17 @@ export default{
   })
     },
     methods:{
-        link(i){
-            // this.list[i].likability++;
-            // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
-
-            //点赞和取消赞
-            this.list[i].changeColor=!this.list[i].changeColor;
-            if(this.list[i].flg){
-                this.list[i].likeNum++;
-                this.list[i].flg=false;
-            }else{
-                this.list[i].likeNum--;
-                this.list[i].flg=true;
-            }
-        },
+        // link(i){
+           
+        //     this.list[i].changeColor=!this.list[i].changeColor;
+        //     if(this.list[i].flg){
+        //         this.list[i].likeNum++;
+        //         this.list[i].flg=false;
+        //     }else{
+        //         this.list[i].likeNum--;
+        //         this.list[i].flg=true;
+        //     }
+        // },
         page(i){
            this.$http.get('/posts/'+i).then(function(res){
                console.log(res.body);
@@ -127,7 +124,10 @@ if(i>0)
    },function(res){
             window.alert("失败");
         })
-    }
+    },
+setPostcookie(i){
+    this.$cookie.set('postId',i,2);
+},
     
     //  mounted:function(){
     //     $(".btn_heart").click(function(){
