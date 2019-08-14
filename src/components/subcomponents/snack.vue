@@ -61,6 +61,13 @@ export default {
                 img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
             },]
         }
+    },
+    created(){
+        this.$http.get('').then(function(res){
+            this.postlist_snack=res.body;
+        }),function(res){
+            window.alert("失败")
+        }
     }
 }
 </script>

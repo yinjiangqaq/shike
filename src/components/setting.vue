@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="app">
-    <form action="/user" enctype="multipart/form-data" method="post" @submit.prevent="submit($event)">
+    <form action="/user" enctype="multipart/form-data" method="post" @submit.prevent="submit($event)" accept-charset="UTF-8">
     <input type="hidden" name="_method" value="put">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
@@ -20,7 +20,7 @@
 
     <div class="name_bock">
       <div class="name">
-        昵称
+        用户名
       </div>
       <div class="input-group">
         <!-- <input type="text" class="form-control" placeholder="请输入昵称" aria-describedby="basic-addon1" style="border-radius:10px"> -->
