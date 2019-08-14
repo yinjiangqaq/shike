@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="app">
-    <form action="/user" enctype="multipart/form-data" method="post">
+    <form action="/user" enctype="multipart/form-data" method="post" @submit.prevent="submit($event)">
     <input type="hidden" name="_method" value="put">
     <div class="title">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;我的设置
@@ -114,6 +114,14 @@
         }
         reader.readAsDataURL(file)
         },
+        submit:function(e){
+          var formData=new FormData(e.target);
+          this.$http.post('/post',formData).then(function(res){
+            this.$router.push('/header');
+          },function(res){
+            window.alert("失败")
+          })
+        }
     }
 }
 </script>
