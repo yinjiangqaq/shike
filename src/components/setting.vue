@@ -34,9 +34,9 @@
         性别
       </div>
       <div class="radio_button">
-        <label><input type="radio" name="gender" value="male" >&nbsp;男生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    <label><input type="radio" name="gender" value="female">&nbsp;女生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label><input type="radio" name="gender" value="secret">&nbsp;保密</label>
+        <label><input type="radio" name="gender" value="1" >&nbsp;男生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <label><input type="radio" name="gender" value="2">&nbsp;女生</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><input type="radio" name="gender" value="3">&nbsp;保密</label>
         
         <!-- <el-radio v-model="radio" label="1" fill="#E666A6">男生</el-radio>
         <el-radio v-model="radio" label="2" fill="#E666A6">女生</el-radio>
