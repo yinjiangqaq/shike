@@ -73,12 +73,8 @@
       </div>
     </div>
 
-    <div class="summit">
-      <div class="keep">
-        <div class="word">
-          <input type="submit" class="btn btn-default" value="保存">
-        </div>
-      </div>
+    <div class="submit">
+          <input type="submit" class="btn btn-default" value="保存" style="height: 40px;width:100px;color: #fff;font-size: 18px;border-radius:18px;background-color: rgb(230, 102, 166);border-style:solid;">
     </div>
 </form>
 </div>
@@ -273,26 +269,10 @@
     }
   }
 }
-.summit{
+.submit{
   height:160px;
   width: 900px;
   margin-left:290px;
   margin-top:10px;
-  
-  .keep{
-    // height: 40px;
-    // width:100px;
-    // color: #fff;
-    // font-size: 18px;
-    // border-radius:18px;
-    // background-color: rgb(230, 102, 166);
-    // // border-color:rgb(230, 102, 166);
-    // border-style:solid;
-    
-    .word{
-      // margin-left:20px;
-      // margin-top:5px;
-    }
-  }
 }
 </style>
