@@ -6,7 +6,7 @@
             </div>
             <div class="userinfo">
                 <div class="image">
-                    <img src="../images/personphoto.jpg" alt="">
+                    <img :src="image" alt="">
                 </div>
                 <div class="username">
                     <div class="nickname">
@@ -57,6 +57,7 @@ export default{
         return{
             activeName:'first',
             userName:'',
+            image:'',
             personalProfile:'',
             attentionNum:'',
             fansNum:''
@@ -69,6 +70,7 @@ export default{
             this.personalProfile=res.body.personalProfile;
             this.attentionNum=res.body.attentionNum;
             this.fansNum=res.body.fansNum;
+            this.image=res.body.headPortrait;
         }),function(res){
             window.alert("失败")
         }
