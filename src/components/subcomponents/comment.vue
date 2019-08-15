@@ -61,7 +61,9 @@ comments: [] ,
   }, 
     methods:{
       getComments(){
-    
+   this.$http.get('/post/'+this.id).then(function(res){
+       this.comments=res.body.commentSet;
+   })
 },
 cancelComment(){
     this.commentText='';
