@@ -1,14 +1,20 @@
 <template>
     <div>
+         <form action="/comment" enctype="multipart/form-data" method="post" @submit.prevent="submit($event)" accept-charset="UTF-8">
+            <input type="hidden" name="_method" value="put">
             <b v-if="type==='1'">你回复&nbsp;{{name}}</b>
         <b v-else></b>
-        <textarea placeholder="请输入你的评论，最多评论120字" maxlength="120" style="width:100%;height:100px;" v-model="commentText" id="comment-box"></textarea>
+        <textarea placeholder="请输入你的评论，最多评论120字" maxlength="120" style="width:100%;height:100px;" v-model="commentText" id="comment-box" name="content"></textarea>
         <div style="height:10px;"></div>
         <div class="controls">
+               <input type="text" name="userName" v-model="userName" style="display:none;" >
+               <input type="text" name="commentDate" v-model="date" style="display:none;">
+               <input type="text" name="postId" style="display:none;">
         <div class="form-actions" style="margin-left:82%;">
             <input class="btn btn-info" id="submit_btn" type="submit" name="submit" value="提交"/>
              <button class="btn" @click="cancelComment">取消</button>
         </div>
+     
         <div class="comment-list">
                         <h4 style="background-color: #eee;text-align:center;height:40px;line-height:40px;">评论列表</h4>
                         <div class="cmt-item" v-for="(item, index) in comments" :key=index>
@@ -24,38 +30,34 @@
                         </div> 
                     </div>
          </div>
+         </form>
     </div>
 </template>
 <script>
+import { constants } from 'crypto';
 
 export default {
+    props:['id'],
     data(){
         return{
             commentText:'',
             type:'0',
             name:'',
+            userName:'',
+            date:'',
+            postid:'',
            
-comments:[
-    {   
-        id:'1',
-        userName:'林俊涛',
-        postdate:'2019-8-6',
-        content:'follow your fire',
-        responseText:'',
-    },
-    {
-        id:'2',
-        userName:'dai',
-        postdate:'2019-08-06',
-        content:'OH',
-        responseText:'',
-    },
-    
-]
+comments: [] ,
+
         };
     },
  created(){
-this.getComments();
+     this.userName=this.$cookie.get('user');
+   
+     this.postid=this.id;
+     console.log(this.postid);
+     this.formatDate(new Date());
+    
   }, 
     methods:{
       getComments(){
@@ -65,15 +67,40 @@ cancelComment(){
     this.commentText='';
     this.type='0';
 },
-     response(i){
+ response(i){
      this.type='1';
      this.name=this.comments[i].userName;
      $('#comment-box').focus();
     },
+ submit: function(e){
+      var formData =new FormData(e.target);
+      this.$http.post('/comment',formData).then(function(res){
+          window.alert("评论成功");
+      this.$router.push('/detail/'+this.postid);
+      this.commentText='';
+},function(res){
+  window.alert("失败");
+})
+},
+formatDate(date)
+{
+  var y = date.getFullYear();  
+    var m = date.getMonth() + 1;  
+    m = m < 10 ? ('0' + m) : m;  
+    var d = date.getDate();  
+    d = d < 10 ? ('0' + d) : d;  
+    var h = date.getHours();  
+    var minute = date.getMinutes();  
+    minute = minute < 10 ? ('0' + minute) : minute; 
+    var second= date.getSeconds();  
+    second = minute < 10 ? ('0' + second) : second;  
+    this.date= ''+ y + '-' + m + '-' + d+' '+h+':'+minute+':'+ second; 
+
+},
     },
    
-    props:["id"],
-}
+   
+};
 </script>
 <style lang="scss" scoped>
 

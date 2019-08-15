@@ -8,23 +8,26 @@
     <div class="box">
         <div style="height:30px; width:100%;"></div>
         <div style="height:60px; width:100%;">
-            <img src="../images/personphoto.jpg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:165px;">
+            <img :src="personimg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:165px;">
             <span style="margin-left:230px;float:left;position:relative;">
                 <ul style="list-style:none;padding:0; ">
                     <li style="font-size:16px;font-weight:bold;">{{username}}</li>
                     <li style="margin-top:8px;color:#808080">{{postTime  | dateFormat}}</li>
                 </ul>   
             </span>
+            <span style="position:relative;float:left;margin-left:600px; margin-top:8px;">
+                <button @click="link2()" :class="[flg3?'btn btn-info':'btn']">{{attention}}</button>
+            </span>
         </div>
         
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-6" style="width:900px;margin-left:-220px;margin-top:20px">
+            <div class="col-sm-6 col-md-4 col-lg-6" style="width:900px;margin-left:-170px;margin-top:20px">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3 style="text-align:center">{{title}}</h3>
                         <hr>
                     </div>
-                        <img src="../images/post1.png" alt="..." style="height: 400px;width:400px;">
+                        <img :src="postimg" alt="..." style="height: 400px;width:80%;">
                     <hr>
                     <p>{{text}}</p>
                     <hr>
@@ -40,7 +43,7 @@
                     </div>
                     <div v-bind:class="[flg2?'noshow':'show']">
                         <p>
-                            <comment-box :key="this.id"></comment-box>
+                            <comment-box :id="id"></comment-box>
                         </p>
                     </div> 
                 </div>
@@ -64,20 +67,36 @@ export default {
         likability:'0',
         comment_amount:'2',
         flg1:true,
-        flg2:true
+        flg2:true,
+        attention:'点击关注',
+        flg3:true,
+        fanNum:null,
+        postimg:null,
+        personimg:null,
       };
   },
   //页面刷新就会调用的函数
  
    created(){
-    this.getDate();
+    
+    this.$http.get('/post/'+this.id).then(function(res){
+    
+    console.log(res.body);
+    this.title=res.body.title;
+    this.text=res.body.content;
+    this.username=res.body.author.userName;
+    this.postimg=res.body.image;
+    this.postTime=res.body.date;
+    this.likability=res.body.likeNum;
+    this.personimg=res.body.author.headPortrait;
+    this.comment_amount=res.body.commentSet.length;
+ },function(res){
+     window.alert("失败");
+ })
     },
 
     methods:{
-    getDate(){
-        var dt=new Date();
-        this.postTime=dt;
-    },
+   
     link(){
             // this.list[i].likability++;
             // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
@@ -96,6 +115,18 @@ export default {
             this.flg2=false;
         }else{
             this.flg2=true;
+        }
+    },
+    link2(){
+        if(this.flg3){
+            this.fanNum++;
+            this.flg3=false;
+            this.attention='已关注'
+        }
+        else{
+         this.fanNum++;
+         this.flg3=true;
+         this.attention='点击关注';
         }
     }
   },
