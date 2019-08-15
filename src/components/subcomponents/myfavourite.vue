@@ -59,6 +59,15 @@ export default {
                 comment:'评论数',
                 like:'点赞量',
                 img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
+            },
+            {
+                id:'4',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
             },]
         }
     }

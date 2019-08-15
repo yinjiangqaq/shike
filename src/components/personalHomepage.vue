@@ -10,10 +10,10 @@
                 </div>
                 <div class="username">
                     <div class="nickname">
-                        用户昵称
+                        {{userName}}
                     </div>
                     <div class="introduction">
-                        个人简介
+                        {{personalProfile}}
                     </div>
                 </div>
                 <div class="follow">
@@ -22,7 +22,7 @@
                             关注数
                         </div>
                         <div class="follow_number">
-                            xxx
+                            {{attentionNum}}
                         </div>
                     </div>
                     <div class="fan">
@@ -30,7 +30,7 @@
                             粉丝数
                         </div>
                         <div class="fan_number">
-                            xxx
+                            {{fansNum}}
                         </div>
                     </div>
                 </div>
@@ -47,12 +47,6 @@
             
                 <router-view></router-view>
 
-            <div class="block">
-            <el-pagination
-                layout="prev, pager, next"
-                :total="50">
-            </el-pagination>
-            </div>
         </div>
     </div>
 </template>
@@ -61,7 +55,22 @@
 export default{
     data(){
         return{
-            activeName:'first'
+            activeName:'first',
+            userName:'',
+            personalProfile:'',
+            attentionNum:'',
+            fansNum:''
+        }
+    },
+    created(){
+        this.$http.get('/user/{id}',{params:{id:this.$cookie.get("userId")}}).then(function(res){
+            console.log(res.body);
+            this.userName=res.body.userName;
+            this.personalProfile=res.body.personalProfile;
+            this.attentionNum=res.body.attentionNum;
+            this.fansNum=res.body.fansNum;
+        }),function(res){
+            window.alert("失败")
         }
     }
 }
@@ -70,7 +79,7 @@ export default{
 <style lang="scss" scoped>
 .container{
   background-color: rgba(247, 243, 243, 0.87);
-  height:1200px;
+//   height:100%;
   width:1550px;
 }
 
@@ -84,7 +93,7 @@ export default{
 
 .app2{
   background-color: #fff;
-  height:900px;
+//   height:900px;
   width:1150px;
   margin-left:180px;
   margin-top:50px;

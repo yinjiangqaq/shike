@@ -129,12 +129,12 @@
 <style lang="scss" scoped>
 .container{
   background-color: rgba(247, 243, 243, 0.87);
-  height:1100px;
+  // height:1100px;
   width:1550px;
 }
 .app{
   background-color: #fff;
-  height:1100px;
+  // height:1100px;
   width:1150px;
   margin-left:180px;
 }
@@ -207,7 +207,7 @@
     color:#797878;
   }
   .input-group{
-    margin-left:240px;
+    margin-left:220px;
     .form-control{
       background-color: rgba(240, 240, 240, 0.781);
     }

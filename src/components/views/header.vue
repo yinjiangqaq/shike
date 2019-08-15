@@ -84,6 +84,7 @@ this.$http.post('/',{searchText},{emulateJSON:true}).then(function(res){
 </script>
 
 <style lang="scss" scoped>
+
 .header{
     position:absolute;
     height:200px;
@@ -252,6 +253,7 @@ a{
 }
 
 .display{
+    // height:100%;
     position:absolute;
     margin-top:200px;
 }
