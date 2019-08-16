@@ -64,11 +64,17 @@ export default {
             userName:'',
             backgroundImage:'url('+require('../../images/header.png')+')',
             searchText:'',
+           
         }
     },
        created(){
 this.getUsername();
+//  var userID=this.$cookie.get('user');
+// this.$http.post('',{userID,{emulateJSON:true}).then(function(res){
+
+// });
     },
+
     methods:{
 getUsername(){
 
@@ -76,6 +82,7 @@ getUsername(){
 },
 search(){
 this.$http.post('/',{searchText},{emulateJSON:true}).then(function(res){
+    window.alert("发送成功");
     this.searchText='';
 })   
 }

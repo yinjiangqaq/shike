@@ -96,7 +96,13 @@ export default {
                 img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
             } ]
         }
-    }
+    },
+     created(){
+
+    },
+    methods:{
+
+    },
     
 }
 </script>
