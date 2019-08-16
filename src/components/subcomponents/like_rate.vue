@@ -2,6 +2,7 @@
 <div class="app">
     <ul>
         <li v-for="item in postlist_click" :key="item.id">
+            <router-link :to="'/detail/'+item.id">
             <div class="post_content">
                 <div class="rank">
                     {{item.rank}}
@@ -31,6 +32,7 @@
                     </div>
                 </div>
             </div>
+            </router-link>
         </li>
     </ul>
 </div>
@@ -94,17 +96,36 @@ export default {
                 comment:'评论数',
                 like:'点赞量',
                 img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
-            } ]
+            },
+            {
+                id:'7',
+                rank:'7',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            },
+            {
+                id:'8',
+                rank:'8',
+                title:'标题',
+                msg: '帖子内容',
+                author:'作者名称',
+                comment:'评论数',
+                like:'点赞量',
+                img_url:'https://avatars1.githubusercontent.com/u/275871?s=60&v=4'
+            }, ]
         }
-    }
-    
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 .app{
     margin-top:50px;
-    height:900px;
+    // height:900px;
     width:950px;
     margin-left:85px;
 }
@@ -116,6 +137,14 @@ ul{
 
 li{
     border-bottom:1px solid rgba(247, 243, 243, 0.87);
+}
+
+ul li:hover{
+    box-shadow:0 0 5px rgb(95, 166, 236);
+}
+
+a:hover{
+    text-decoration:none;
 }
 
 .post_content{
@@ -170,4 +199,7 @@ li{
     }
 }
 
+li router-link:hover{
+    color:blue;
+}
 </style>
