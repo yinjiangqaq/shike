@@ -42,10 +42,15 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px" v-model="searchText">
                     </div>
+                    <!-- <span v-for="(item,index) in list1" :key=index > -->
+                    <!-- <router-link :to="'/header/searchcontainer/'+item.searchText"  > -->
+                    <span>
                     <a href="#">
-                        <button type="submit" class="glyphicon glyphicon-search" @click="search">
+                        <button type="button" class="glyphicon glyphicon-search" @click="search" >
                         </button>
                     </a>
+                    <!-- </router-link> -->
+                    </span>
                 </form>       
             </div>
             
@@ -63,7 +68,9 @@ export default {
         return{
             userName:'',
             backgroundImage:'url('+require('../../images/header.png')+')',
+           
             searchText:'',
+               
            
         }
     },
@@ -81,11 +88,11 @@ getUsername(){
     this.userName=this.$cookie.get('user');
 },
 search(){
-this.$http.post('/',{searchText},{emulateJSON:true}).then(function(res){
-    window.alert("发送成功");
+    var searchkey =this.searchText;
+    this.$router.push({path:'/header/searchcontainer',query:{keyword:searchkey}
+    });
     this.searchText='';
-})   
-}
+},
     }
 }
 </script>

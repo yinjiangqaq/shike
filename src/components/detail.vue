@@ -70,7 +70,7 @@ export default {
         flg2:true,
         attention:'点击关注',
         flg3:true,
-        fanNum:null,
+       authorid:'',
         postimg:null,
         personimg:null,
         usersOfLike:[],
@@ -81,8 +81,8 @@ export default {
    created(){
     
     this.$http.get('/post/'+this.id).then(function(res){
-    
-    // console.log(res.body);
+    this.authorid=res.body.author.id;
+    console.log(this.authorid);
     this.title=res.body.title;
     this.text=res.body.content;
     this.username=res.body.author.userName;
@@ -93,7 +93,7 @@ export default {
     this.comment_amount=res.body.commentSet.length;
     var userId=this.$cookie.get('userId');
     this.usersOfLike=res.body.usersOfLike;
-    this.flg1=this.search(userId);
+   this.search( userId);
  },function(res){
      window.alert("失败");
  })
@@ -101,13 +101,17 @@ export default {
 
     methods:{
    search(id){
-       this.usersOfLike.forEach(item=>{
-           if(item.id==id)
+       for(let i=0;i<this.usersOfLike.length;i++)
+       {
+           this.flg1=true;
+           if(this.usersOfLike[i].id==id)
            {
-               return false;
+               this.flg1=false;
+               break;
            }
-       })
+       }
    },
+   //点赞函数
     link(){
             // this.list[i].likability++;
             // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
@@ -116,7 +120,7 @@ export default {
             if(this.flg1){
                 var like =this.flg1;
                 var userId=this.$cookie.get('userId');
-                this.$http.post('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
+                this.$http.put('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
                     window.alert("点赞成功");
                 });
                 this.likability++;
@@ -124,7 +128,7 @@ export default {
             }else{
                 var like =this.flg1;
                 var userId=this.$cookie.get('userId');
-                this.$http.post('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
+                this.$http.put('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
                     window.alert("取消赞成功");
                 });
                 this.likability--;
@@ -139,14 +143,23 @@ export default {
             this.flg2=true;
         }
     },
+    //关注点击函数
     link2(){
         if(this.flg3){
-            this.fanNum++;
+            var attention=this.flg3;
+            var userId=this.$cookie.get('userId');
+             this.$http.put('/user/'+this.authorid,{attention,userId},{emulateJSON:true}).then(function(res){
+                 window.alert("关注成功");
+             });
             this.flg3=false;
             this.attention='已关注'
         }
         else{
-         this.fanNum++;
+         var attention=this.flg3;
+            var userId=this.$cookie.get('userId');
+             this.$http.put('/user/'+this.authorid,{attention,userId},{emulateJSON:true}).then(function(res){
+                 window.alert("取消关注成功");
+             });
          this.flg3=true;
          this.attention='点击关注';
         }
