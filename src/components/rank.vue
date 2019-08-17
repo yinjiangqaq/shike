@@ -45,13 +45,11 @@ export default{
 <style lang="scss" scoped>
 .container{
   background-color: rgba(247, 243, 243, 0.87);
-//   height:1100px;
   width:1550px;
 }
 
 .app{
   background-color: #fff;
-//   height:1100px;
   width:1150px;
   margin-left:180px;
 }
