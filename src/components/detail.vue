@@ -73,6 +73,7 @@ export default {
         fanNum:null,
         postimg:null,
         personimg:null,
+        usersOfLike:[],
       };
   },
   //页面刷新就会调用的函数
@@ -81,7 +82,7 @@ export default {
     
     this.$http.get('/post/'+this.id).then(function(res){
     
-    console.log(res.body);
+    // console.log(res.body);
     this.title=res.body.title;
     this.text=res.body.content;
     this.username=res.body.author.userName;
@@ -90,25 +91,46 @@ export default {
     this.likability=res.body.likeNum;
     this.personimg=res.body.author.headPortrait;
     this.comment_amount=res.body.commentSet.length;
+    var userId=this.$cookie.get('userId');
+    this.usersOfLike=res.body.usersOfLike;
+    this.flg1=this.search(userId);
  },function(res){
      window.alert("失败");
  })
     },
 
     methods:{
-   
+   search(id){
+       this.usersOfLike.forEach(item=>{
+           if(item.id==id)
+           {
+               return false;
+           }
+       })
+   },
     link(){
             // this.list[i].likability++;
             // //把list的索引值当成函数的参数从v-for那边传到后台，在手动修改list具体哪一项的好感度
 
             //点赞和取消赞
             if(this.flg1){
+                var like =this.flg1;
+                var userId=this.$cookie.get('userId');
+                this.$http.post('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
+                    window.alert("点赞成功");
+                });
                 this.likability++;
                 this.flg1=false;
             }else{
+                var like =this.flg1;
+                var userId=this.$cookie.get('userId');
+                this.$http.post('/post/'+this.id,{like,userId},{emulateJSON:true}).then(function(res){
+                    window.alert("取消赞成功");
+                });
                 this.likability--;
                 this.flg1=true;
             }
+          
         },
     change(){
         if(this.flg2){

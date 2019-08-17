@@ -1,14 +1,15 @@
 <template>
 <div class="app">
     <ul>
-        <li v-for="item in postlist_click" :key="item.id">
+        <li v-for="(item,index) in postlist_click" :key=index>
+            <router-link :to="'/detail/'+item.id">
             <div class="post_content">
                 <div class="rank">
-                    {{item.rank}}
+                    {{index+1}}
                 </div>
 
                 <div class="post_image">
-                    <img :src="item.img_url" alt="">
+                    <img :src="item.image" alt="">
                 </div>
 
                 <div class="post_info">
@@ -16,21 +17,22 @@
                         {{item.title}}
                     </div>
                     <div class="post_content">
-                        {{item.msg}}
+                        {{item.content}}
                     </div>
                     <div class="post_comment">
                         <div class="author_name">
-                            {{item.author}}
+                            {{item.author.userName}}
                         </div>
                         <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comment}}
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.commentSet.length}}
                         </div>
                         <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.like}}
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.likeNum}}
                         </div>
                     </div>
                 </div>
             </div>
+            </router-link>
         </li>
     </ul>
 </div>
@@ -99,8 +101,8 @@ export default {
         }
     },
     created(){
-        this.$http.get('/billboardOfLike').then(function(res){
-            console.log(res.body)
+        this.$http.get('/billboardOfClick').then(function(res){
+            console.log("ok")
             this.postlist_click=res.body;
         }),function(res){
             window.alert("失败")

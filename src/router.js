@@ -13,7 +13,6 @@ import dynamic from './components/subcomponents/dynamic.vue'
 import click from './components/subcomponents/click_rate.vue'
 import like from './components/subcomponents/like_rate.vue'
 
-import test from './components/test.vue'
 
 import login from './components/views/login.vue'
 import register from './components/views/register.vue'

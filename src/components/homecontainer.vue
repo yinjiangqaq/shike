@@ -55,18 +55,15 @@ export default{
            msg: '',
           likeNum:'',
             list: [],
-           
+           pageNum:0,
         };
     },
     created(){
   this.$http.get('/posts/'+0).then(function(res){
       console.log(res.body);
-    this.list=res.body;
-     this.$cookie.set('pageNum',0,1);
-    // var bytes =new Uint8Array(list[0].image);
-    // var blob =new Blob([bytes],{type:"image/png"});
-    // var url =new URL.createObjectURL(blob);
-    // this.imgurl=url;
+     this.list=res.body;
+    //  this.$cookie.set('pageNum',0,1);
+  
     
         },function(res){
         window.alert("失败");
@@ -87,47 +84,49 @@ export default{
         page(i){
            this.$http.get('/posts/'+i).then(function(res){
                console.log(res.body);
-               this.list=res.body;
-            this.$cookie.set('pageNum',i,1);
+              this.list=res.body;
+            // this.$cookie.set('pageNum',i,1);
+            this.pageNum=i;
         },function(res){
             window.alert("失败");
         })
     },
     down(){
-var i=this.$cookie.get('pageNum');
+// var i=this.$cookie.get('pageNum');
+var i=this.pageNum;
 if(i>0)
 {
    this.$http.get('/posts/'+(i-1)).then(function(res){
                console.log(res.body);
                this.list=res.body;
-                this.$cookie.set('pageNum',i-1,1);
+                // this.$cookie.set('pageNum',i-1,1);
+                this.pageNum=i-1;
    },function(res){
             window.alert("失败");
         })
 }else{
      this.$http.get('/posts/'+0).then(function(res){
       console.log(res.body);
-    this.list=res.body;
+     this.list=res.body;
      },function(res){
         window.alert("失败");
   })
 }
     },
     up(){
-       var i=this.$cookie.get('pageNum');
-      var j= parseInt(i);
-      
+    //    var i=this.$cookie.get('pageNum');
+    //   var j= parseInt(i);
+      var j=this.pageNum;
        this.$http.get('/posts/'+(j+1)).then(function(res){
                console.log(res.body);
-               this.list=res.body;
-                this.$cookie.set('pageNum',(j+1),1);
+             this.list=res.body;
+                // this.$cookie.set('pageNum',(j+1),1);
+                this.pageNum=j+1;
    },function(res){
             window.alert("失败");
         })
     },
-setPostcookie(i){
-    this.$cookie.set('postId',i,2);
-},
+
     
     //  mounted:function(){
     //     $(".btn_heart").click(function(){
