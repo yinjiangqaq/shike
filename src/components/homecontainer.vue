@@ -5,7 +5,7 @@
             <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index>
                 <router-link :to="'/detail/'+item.id" >
                 <div class="thumbnail">
-                    <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
+                    <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:100%;height:400px;">
                     <div class="caption">
                         <div style="font-size:22px;margin-bottom:8px">{{item.title}}</div>
                         <span><img :src="item.author.headPortrait" alt="" style="width:20px;height:20px;border-radius:10px"></span>&nbsp;<span>{{item.author.userName}}</span>
@@ -146,8 +146,8 @@ if(i>0)
 
 <style lang="scss" scoped>
 .homecontainer{
-width: 1400px;
-margin-left:50px;
+width: 100%;
+margin-left:3%;
 
 }
 #jianju li {

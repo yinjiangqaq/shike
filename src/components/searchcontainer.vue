@@ -1,5 +1,5 @@
 <template>
-    <div class="searchcontainer">
+    <div class="searchcontainer" >
      <div style="height:30px; width:100%;"></div>
         <div class="row" >
             <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index>
@@ -56,25 +56,34 @@ export default{
           likeNum:'',
             list: [],
            pageNum:0,
-        //   keyWord:this.$route.params.key,
-           keyWord:'',
+          keyWord:this.$route.params.key,
+        //    keyWord:'',
         };
     },
+     inject:['reload'],
     created(){
         
-       this.keyWord=this.$route.query.keyword;
+    //    this.keyWord=this.$route.query.keyword;
         var keyWord=this.keyWord;
         console.log(keyWord);
-  this.$http.get('/searchedPosts/'+0,{params :{keyWord}}).then(function(res){
+        this.$http.get('/searchedPosts/'+0,{params :{keyWord}}).then(function(res){
       console.log(res.body);
      this.list=res.body;
-    //  this.$cookie.set('pageNum',0,1);
+  
   
     
         },function(res){
         window.alert("失败");
   })
     },
+    // watch:{
+    //     '$route'(to,from){
+    //         console.log(this.$route.params);
+    //         this.reload();
+
+    //     }
+    // },
+   
     methods:{
        
         page(i){
@@ -146,8 +155,8 @@ if(i>0)
 
 <style lang="scss" scoped>
 .searchcontainer{
-width: 1400px;
-margin-left:50px;
+width: 100%;
+margin-left:3%;
 
 }
 #jianju li {

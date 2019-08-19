@@ -175,13 +175,13 @@ export default {
 .container{
   background: #fff;
   height:1000px;
-  width:1550px;
+  width:100%;
   padding:0px;
 }
 
 .app{
   height:800px;
-  width:1150px;
+  width:100%;
   margin-left:180px;
 }
 

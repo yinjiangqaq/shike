@@ -15,7 +15,7 @@
                     </div>
                     <div class="author_info">
                         <div class="author_name">
-                            {{item.author}}
+                            {{item.author.userName}}
                         </div>
                         <div class="comment_number">
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.commentSet.length}}
