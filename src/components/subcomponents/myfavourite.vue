@@ -17,7 +17,7 @@
                             {{item.author.userName}}
                         </div>
                         <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.commentSet.length}}
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comLength}}
                         </div>
                         <div class="like">
                             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.likeNum}}
@@ -33,13 +33,24 @@
 export default {
     data(){
         return{
-            postlist_fav:[]
+            postlist_fav:[],
+            comLength
         }
     },
     created(){
         this.$http.get('/user/{id}',{params:{id:this.$cookie.get("userId")}}).then(function(res){
             console.log("ok");
             this.postlist_fav=res.body.postsOfLike;
+            for(var i=0;i<this.postlist_fav.length;i++){
+                var postid=this.postlist_fav[i].id;
+                this.$http.get('/post/{id}',{params:{id:postid}}).then(function(res){
+                    console.log(res.body);
+                    console.log("评论长度"+res.body.commentSet.length);
+
+                    this.postlist[i].comLength=res.body.commentSet.length;
+                    console.log(res.body.commentSet.length)
+                })
+            }
         }),function(res){
             window.alert("失败");
         }
