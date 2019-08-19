@@ -1,26 +1,26 @@
 <template>
     <ul>
-        <li v-for="item in postlist_snack" :key="item.id">
+        <li v-for="item in postlist_fav" :key="item.id">
             <a href="#">
                 <div>
-                    <img :src="item.img_url" alt="">
+                    <img :src="item.image" alt="">
                 </div>
                 <div class="info">
                     <div class="title">
                         {{item.title}}
                     </div>
                     <div class="content">
-                        {{item.msg}}
+                        {{item.content}}
                     </div>
                     <div class="author_info">
                         <div class="author_name">
-                            {{item.author}}
+                            {{item.author.userName}}
                         </div>
                         <div class="comment_number">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comment}}
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.commentSet.length}}
                         </div>
                         <div class="like">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.like}}
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;{{item.likeNum}}
                         </div>
                     </div>
                 </div>
@@ -33,42 +33,15 @@
 export default {
     data(){
         return{
-            postlist_snack:[{
-                id:'1',
-                title:'标题',
-                msg: '帖子内容',
-                author:'作者名称',
-                comment:'评论数',
-                like:'点赞量',
-                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            },
-            {
-                id:'2',
-                title:'标题',
-                msg: '帖子内容',
-                author:'作者名称',
-                comment:'评论数',
-                like:'点赞量',
-                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            },
-            {
-                id:'3',
-                title:'标题',
-                msg: '帖子内容',
-                author:'作者名称',
-                comment:'评论数',
-                like:'点赞量',
-                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            },
-            {
-                id:'4',
-                title:'标题',
-                msg: '帖子内容',
-                author:'作者名称',
-                comment:'评论数',
-                like:'点赞量',
-                img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            },]
+            postlist_fav:[]
+        }
+    },
+    created(){
+        this.$http.get('/user/{id}',{params:{id:this.$cookie.get("userId")}}).then(function(res){
+            console.log("ok");
+            this.postlist_fav=res.body.postsOfLike;
+        }),function(res){
+            window.alert("失败");
         }
     }
 }
@@ -118,5 +91,9 @@ li{
             margin-left:20px;
         }
     }
+}
+
+ul li:hover{
+    box-shadow:0 0 5px rgb(95, 166, 236);
 }
 </style>

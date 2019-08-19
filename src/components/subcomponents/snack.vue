@@ -129,4 +129,8 @@ li{
         }
     }
 }
+
+ul li:hover{
+    box-shadow:0 0 5px rgb(95, 166, 236);
+}
 </style>
