@@ -2,7 +2,7 @@
     <div class="searchcontainer" >
      <div style="height:30px; width:100%;"></div>
         <div class="row" >
-            <div class="col-sm-6 col-md-4 col-lg-3" v-for="(item,index) in list" :key=index>
+            <div class="col-sm-6 col-md-5 col-lg-3" v-for="(item,index) in list" :key=index>
                 <router-link :to="'/detail/'+item.id" >
                 <div class="thumbnail">
                     <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
@@ -156,7 +156,7 @@ if(i>0)
 <style lang="scss" scoped>
 .searchcontainer{
 width: 100%;
-margin-left:3%;
+//margin-left:3%;
 
 }
 #jianju li {

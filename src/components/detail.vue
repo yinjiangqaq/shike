@@ -8,14 +8,14 @@
     <div class="box">
         <div style="height:30px; width:100%;"></div>
         <div style="height:60px; width:100%;">
-            <img :src="personimg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;margin-left:165px;">
-            <span style="margin-left:230px;float:left;position:relative;">
+            <img :src="personimg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;">
+            <span style="margin-left:60px;float:left;position:relative;">
                 <ul style="list-style:none;padding:0; ">
                     <li style="font-size:16px;font-weight:bold;">{{username}}</li>
                     <li style="margin-top:8px;color:#808080">{{postTime  | dateFormat}}</li>
                 </ul>   
             </span>
-            <span style="position:relative;float:left;margin-left:600px; margin-top:8px;">
+            <span style="position:relative;float:left;margin-left:45%; margin-top:8px;">
                 <button @click="link2()" :class="[flg3?'btn btn-info':'btn']">{{attention}}</button>
             </span>
         </div>
@@ -182,7 +182,7 @@ export default {
 .app{
   height:800px;
   width:100%;
-  margin-left:180px;
+  margin-left:10%;
 }
 
 .header{
@@ -212,6 +212,9 @@ hr{
     margin-left:400px;
 }
 
+.row{
+    margin-left: 19.5%;
+}
 .comment{
     display:flex;
     margin-top:-60px;

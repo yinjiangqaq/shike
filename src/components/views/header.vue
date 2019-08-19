@@ -252,7 +252,7 @@ a{
         color:rgb(230, 102, 166);
     }
     .glyphicon{
-    top:3px;
+   // top:3px;
     height:35px;
     width:30px;
     border-radius:5px;
