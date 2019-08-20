@@ -222,7 +222,7 @@ a{
 .rank{
     position:absolute;
     margin-top:8.8%;
-    margin-left:65.5%;
+    margin-left:63.2%;
     height:33px;
     width:80px;
     border-radius:4px;
