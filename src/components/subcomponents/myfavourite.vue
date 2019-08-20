@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="item in postlist_fav" :key="item.id">
+        <li v-for="(item,index) in postlist_fav2" :key=index>
             <a href="#">
                 <div>
                     <img :src="item.image" alt="">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="author_info">
                         <div class="author_name">
-                            {{item.author.userName}}
+                            {{item.userName}}
                         </div>
                         <div class="comment_number">
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;{{item.comLength}}
@@ -34,7 +34,10 @@ export default {
     data(){
         return{
             postlist_fav:[],
-            comLength
+            comLength:'',
+            postlist_fav1:[],
+            postlist_fav2:[],
+            j:0
         }
     },
     created(){
@@ -43,12 +46,33 @@ export default {
             this.postlist_fav=res.body.postsOfLike;
             for(var i=0;i<this.postlist_fav.length;i++){
                 var postid=this.postlist_fav[i].id;
-                this.$http.get('/post/{id}',{params:{id:postid}}).then(function(res){
-                    console.log(res.body);
-                    console.log("评论长度"+res.body.commentSet.length);
+                var postimage=this.postlist_fav[i].image;
+                var posttitle=this.postlist_fav[i].title;
+                var postcontent=this.postlist_fav[i].content;
+                var postuserName=this.postlist_fav[i].author.userName;
+                var postlikeNum=this.postlist_fav[i].likeNum;
 
-                    this.postlist[i].comLength=res.body.commentSet.length;
-                    console.log(res.body.commentSet.length)
+                this.$http.get('/post/{id}',{params:{id:postid}}).then(function(res){
+
+                    this.postlist_fav1={
+                        [this.j++]:{
+                            id:res.body.id,
+                            image:res.body.image,
+                            title:res.body.title,
+                            content:res.body.content,
+                            userName:res.body.author.userName,
+                            likeNum:res.body.likeNum,
+                            comLength:res.body.commentSet.length //添加新属性，解决set property of undefined
+                        }
+                    }
+
+                    var jsonData=JSON.stringify(this.postlist_fav1[this.j-1]);//转为json格式
+                    this.postlist_fav2[this.j-1]=eval('('+jsonData+')');//转为json对象
+
+                    this.postlist_fav2=this.postlist_fav2.map(item=>{ //解决无法渲染，对象指向问题
+                        item.rightData=this.postlist_fav2
+                        return item
+                    })
                 })
             }
         }),function(res){
