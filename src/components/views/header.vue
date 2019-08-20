@@ -221,9 +221,9 @@ a{
 
 .rank{
     position:absolute;
-    margin-top:9.18%;
-    margin-left:63%;
-    height:30px;
+    margin-top:8.8%;
+    margin-left:65.5%;
+    height:33px;
     width:80px;
     border-radius:4px;
     background-color: rgba(255, 255, 255, 0.925);

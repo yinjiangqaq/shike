@@ -166,7 +166,7 @@
   height:132px;
 }
 .head_img{
-  margin-left:18%;
+  margin-left:13%;
   height: 90px;
 }
 .head_img img{
@@ -180,7 +180,7 @@
   height: 37px;
   justify-content: flex-end;
   align-items: center;
-  margin-left:80px;
+  margin-left:90px;
   width:200px;
 }
 .hiddenInput{
@@ -210,7 +210,7 @@
     color:#797878;
   }
   .input-group{
-    margin-left:20%;
+    margin-left:24.5%;
     .form-control{
       background-color: rgba(240, 240, 240, 0.781);
     }
@@ -249,7 +249,7 @@
     color:#797878;
   }
   .text{
-    margin-left:15.5%;
+    margin-left:22.5%;
     font-size:14px;
     border-radius:10px;
     .el-textarea{
@@ -272,7 +272,7 @@
     color:#797878;
   }
   .date{
-    margin-left:200px;
+    margin-left:22.5%;
     font-size:14px;
     .input{
       border-radius:5px;
@@ -284,6 +284,6 @@
   height:160px;
   width: 900px;
   margin-left:290px;
-  margin-top:10px;
+  margin-top:30px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <ul>
         <li v-for="(item,index) in postlist_fav2" :key=index>
-            <a href="#">
+            <router-link :to="'/detail/'+item.id">
                 <div>
                     <img :src="item.image" alt="">
                 </div>
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </router-link>
         </li>
     </ul>
 </template>
