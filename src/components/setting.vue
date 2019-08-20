@@ -130,13 +130,16 @@
 .container{
   background-color: rgba(247, 243, 243, 0.87);
   // height:1100px;
-  width:1550px;
+  width:100%;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 .app{
   background-color: #fff;
   // height:1100px;
-  width:1150px;
-  margin-left:180px;
+  width:100%;
+   margin-left:auto;
+  margin-right: auto;
 }
 .title{
   font-size:30px;
@@ -152,7 +155,7 @@
   align-items: center;
   // justify-content: space-between;
   height:200px;
-  width: 900px;
+  //width: 900px;
   padding:0px 24px 0px 38px;
   margin-top:15px;
   margin-left:100px;
@@ -207,7 +210,7 @@
     color:#797878;
   }
   .input-group{
-    margin-left:220px;
+    margin-left:20%;
     .form-control{
       background-color: rgba(240, 240, 240, 0.781);
     }
@@ -217,7 +220,7 @@
   display: flex;
   align-items: center;
   height:180px;
-  width: 900px;
+  // width: 900px;
   margin-left:100px;
   border-bottom: 2px solid #f7f7f7;
   .gender{
@@ -246,7 +249,7 @@
     color:#797878;
   }
   .text{
-    margin-left:200px;
+    margin-left:15.5%;
     font-size:14px;
     border-radius:10px;
     .el-textarea{

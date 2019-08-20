@@ -45,13 +45,16 @@ export default{
 <style lang="scss" scoped>
 .container{
   background-color: rgba(247, 243, 243, 0.87);
-  width:1550px;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .app{
   background-color: #fff;
-  width:1150px;
-  margin-left:180px;
+  width:90%;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .nav_header{
@@ -65,14 +68,14 @@ nav .tab{
 }
 
 .tab{
-    margin-left:90px;
+    margin-left:15%;
     margin-top:50px;
     width:900px;
 }
 
 .tab li{
     height:50px;
-    width:450px;
+    width:30%;
     display:inline-block;
     font-size:20px;
     line-height: 60px;
@@ -80,7 +83,7 @@ nav .tab{
     border-bottom: 3px solid rgba(247, 243, 243, 0.87);
     div{
         height:50px;
-        width:450px;
+        width:100%;
     }
     a{
         text-decoration:none
@@ -96,7 +99,7 @@ nav .tab{
     .router_link{
         color: #E666A6;
         height:50px;
-        width:450px;
+        width:100%;
     }
 }
 

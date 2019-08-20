@@ -102,8 +102,10 @@ export default {
     },
     created(){
         this.$http.get('/billboardOfClick').then(function(res){
-            console.log("ok")
+            //window.alert("成功");
+           
             this.postlist_click=res.body;
+            console.log(this.postlist_click);
         }),function(res){
             window.alert("失败")
         }

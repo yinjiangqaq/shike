@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header" >
-            <img src="../../images/header.png" alt="" class="header_image">
+            <img src="../../images/header.png" alt="" class="header_image" style="height:100%;width:100%;">
             <div class="subheader" display:inline>
                 <div class="blurheader">
                 </div>
@@ -40,23 +40,23 @@
             <div class="search">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px" v-model="searchText">
+                        <input type="text" class="form-control" placeholder="请输入你想查找的零食" style="width:240px" v-model="list1[0].searchText">
                     </div>
-                    <!-- <span v-for="(item,index) in list1" :key=index > -->
-                    <!-- <router-link :to="'/header/searchcontainer/'+item.searchText"  > -->
-                    <span>
+                    <span v-for="(item,index) in list1" :key=index  style="float:right;margin-left:2px;"> 
+                     <router-link :to="'/header/searchcontainer/'+item.searchText" >
+                    <!-- <span> -->
                     <a href="#">
                         <button type="button" class="glyphicon glyphicon-search" @click="search" >
                         </button>
                     </a>
-                    <!-- </router-link> -->
+                    </router-link>
                     </span>
                 </form>       
             </div>
             
         </div>
 
-        <div class="display">
+        <div class="display" >
             <router-view></router-view>
         </div>
     </div>
@@ -69,7 +69,7 @@ export default {
             userName:'',
             backgroundImage:'url('+require('../../images/header.png')+')',
            
-            searchText:'',
+            list1:[{searchText:''},],
                
            
         }
@@ -185,7 +185,8 @@ a{
     height:65px;
     width:80px;
     background-color: rgb(230, 102, 166);
-    margin-top:-4%;
+    // margin-top:-4%;
+    top:0;
     margin-left:84%;
     border-radius:0px 0px 10px 10px;
     text-align: center;
@@ -220,17 +221,17 @@ a{
 
 .rank{
     position:absolute;
-    margin-top:8.8%;
-    margin-left:65%;
-    height:16%;
-    width:6%;
+    margin-top:9.18%;
+    margin-left:63%;
+    height:30px;
+    width:80px;
     border-radius:4px;
     background-color: rgba(255, 255, 255, 0.925);
     
     .glyphicon{
         font-weight:bold;
-        margin-top:8px;
-        margin-left:7px;
+        margin-top:8%;
+        margin-left:8%;
         color:rgb(248, 128, 188);
     }
 }
@@ -241,8 +242,8 @@ a{
 
 .search{
     position:absolute;
-    margin-top:8%;
-    margin-left:70.3%;
+    margin-top:8.19%;
+    margin-left:70%;
     a{
         bottom: rgba(255, 255, 255, 0.925);
         color:rgb(88, 146, 221);
@@ -251,7 +252,7 @@ a{
         color:rgb(230, 102, 166);
     }
     .glyphicon{
-    top:3px;
+   // top:3px;
     height:35px;
     width:30px;
     border-radius:5px;
@@ -268,6 +269,7 @@ a{
 
 .display{
     // height:100%;
+    width:100%;
     position:absolute;
     margin-top:200px;
 }

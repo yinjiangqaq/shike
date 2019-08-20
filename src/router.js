@@ -32,8 +32,8 @@ var router = new VueRouter({
             component: header,
             redirect: '/header/homecontainer',
             children: [
-                // { path: 'searchcontainer/:key', component: searchcontainer },
-                { path: 'searchcontainer', component: searchcontainer },
+                { path: 'searchcontainer/:key', component: searchcontainer },
+                // { path: 'searchcontainer', component: searchcontainer },
                 { path: 'homecontainer', component: homecontainer },
                 { path: 'send', component: send },
                 {

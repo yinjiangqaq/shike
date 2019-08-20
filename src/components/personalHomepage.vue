@@ -82,22 +82,26 @@ export default{
 .container{
   background-color: rgba(247, 243, 243, 0.87);
 //   height:100%;
-  width:1550px;
+  width:100%;
+  padding-left:5%;
+  padding-right: 5%;
 }
 
 .app1{
   background-color: #fff;
   height:250px;
-  width:1150px;
-  margin-left:180px;
+  width:100%;
+  margin-left:auto;
+  margin-right: auto;
   border-radius:0 0 5px 5px;
 }
 
 .app2{
   background-color: #fff;
 //   height:900px;
-  width:1150px;
-  margin-left:180px;
+  width:100%;
+  margin-left:auto;
+  margin-right: auto;
   margin-top:50px;
   border-radius:5px 5px 0 0;
 
@@ -148,7 +152,7 @@ export default{
     margin-left:50px;
     margin-top:20px;
     .nickname{
-        font-size:20px;
+        font-size:17px;
         font-weight:bold;
     }
     .introduction{
@@ -159,7 +163,7 @@ export default{
 .follow{
   display: flex;
   align-items: center;
-  margin-left:550px;
+  margin-left:50%;
   margin-top:20px;
   .follower{
       .follow_word{
