@@ -51,6 +51,12 @@ export default {
 
             console.log(res.body);
             this.postlist_like=res.body
+
+            for(var i=0;i<this.postlist_like.length;i++){
+                if(this.postlist_like.author==null){
+                    this.postlist_like.splice(i,1)
+                }
+            }
         }),function(res){
             window.alert("失败")
         }

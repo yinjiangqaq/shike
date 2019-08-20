@@ -70,7 +70,7 @@ export default {
                     this.postlist_fav2[this.j-1]=eval('('+jsonData+')');//转为json对象
 
                     this.postlist_fav2=this.postlist_fav2.map(item=>{ //解决无法渲染，对象指向问题
-                        item.rightData=this.postlist_fav2
+                        
                         return item
                     })
                 })

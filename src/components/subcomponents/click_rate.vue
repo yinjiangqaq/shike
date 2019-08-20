@@ -105,6 +105,11 @@ export default {
             //window.alert("成功");
            
             this.postlist_click=res.body;
+            for(var i=0;i<this.postlist_click.length;i++){
+                if(this.postlist_click.author==null){
+                    this.postlist_click.splice(i,1)
+                }
+            }
             console.log(this.postlist_click);
         }),function(res){
             window.alert("失败")
