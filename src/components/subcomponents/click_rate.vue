@@ -43,61 +43,6 @@ export default {
     data(){
         return{
             postlist_click:[]
-            // postlist_click: [{
-            //     id:'1',
-            //     rank:'1',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // }, {
-            //     id:'2',
-            //     rank:'2',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // },{
-            //     id:'3',
-            //     rank:'3',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // },{
-            //     id:'4',
-            //     rank:'4',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // },{
-            //     id:'5',
-            //     rank:'5',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // },{
-            //     id:'6',
-            //     rank:'6',
-            //     title:'标题',
-            //     msg: '帖子内容',
-            //     author:'作者名称',
-            //     comment:'评论数',
-            //     like:'点赞量',
-            //     img_url:'https://avatars3.githubusercontent.com/u/40078051?s=40&v=4'
-            // } ]
         }
     },
     created(){
@@ -106,8 +51,10 @@ export default {
            
             this.postlist_click=res.body;
             for(var i=0;i<this.postlist_click.length;i++){
-                if(this.postlist_click.author==null){
+                if(this.postlist_click[i].author==null){
+                    console.log(i)
                     this.postlist_click.splice(i,1)
+                    i--
                 }
             }
             console.log(this.postlist_click);

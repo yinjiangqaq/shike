@@ -53,8 +53,10 @@ export default {
             this.postlist_like=res.body
 
             for(var i=0;i<this.postlist_like.length;i++){
-                if(this.postlist_like.author==null){
+                if(this.postlist_like[i].author==null){
+                    console.log(i)
                     this.postlist_like.splice(i,1)
+                    i--
                 }
             }
         }),function(res){
