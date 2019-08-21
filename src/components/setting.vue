@@ -249,7 +249,7 @@
     color:#797878;
   }
   .text{
-    margin-left:22.5%;
+    margin-left:21%;
     font-size:14px;
     border-radius:10px;
     .el-textarea{

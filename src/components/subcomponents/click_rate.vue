@@ -48,8 +48,9 @@ export default {
     created(){
         this.$http.get('/billboardOfClick').then(function(res){
             //window.alert("成功");
-           
+           console.log(res.body);
             this.postlist_click=res.body;
+            
             for(var i=0;i<this.postlist_click.length;i++){
                 if(this.postlist_click[i].author==null){
                     console.log(i)
