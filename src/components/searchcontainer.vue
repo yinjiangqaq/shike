@@ -2,7 +2,7 @@
     <div class="searchcontainer" >
      <div style="height:30px; width:100%;"></div>
         <div class="row" >
-            <div class="col-sm-6 col-md-5 col-lg-3" v-for="(item,index) in list" :key=index>
+            <div class="col-sm-6 col-md-3 col-lg-3" v-for="(item,index) in list" :key=index>
                 <router-link :to="'/detail/'+item.id" >
                 <div class="thumbnail">
                     <img :src="item.image" class="img-responsive" alt="Responsive image" style="width:400px;height:400px;">
@@ -16,7 +16,7 @@
                 </router-link>
                 <!-- class="btn btn-danger" -->
 
-                <div style="display:flex;margin-left:270px;margin-top:-60px;"  class="pink">
+                <div style="display:flex;margin-left:70%;margin-top:-60px;"  class="pink">
                     <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:20px;padding-right:5px"></span>
                     {{item.likeNum}}
                 </div>
