@@ -6,8 +6,8 @@
     </div>
     <div class="app">
     <div class="box">
-        <div style="height:30px; width:100%;"></div>
-        <div style="height:60px; width:100%;">
+        <div style="height:30px;"></div>
+        <div style="height:60px;">
             <img :src="personimg" alt="" class="img-circle" style="height: 50px;width:50px;position:absolute;">
             <span style="margin-left:60px;float:left;position:relative;">
                 <ul style="list-style:none;padding:0; ">

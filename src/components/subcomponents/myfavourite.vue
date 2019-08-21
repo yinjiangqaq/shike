@@ -46,11 +46,6 @@ export default {
             this.postlist_fav=res.body.postsOfLike;
             for(var i=0;i<this.postlist_fav.length;i++){
                 var postid=this.postlist_fav[i].id;
-                var postimage=this.postlist_fav[i].image;
-                var posttitle=this.postlist_fav[i].title;
-                var postcontent=this.postlist_fav[i].content;
-                var postuserName=this.postlist_fav[i].author.userName;
-                var postlikeNum=this.postlist_fav[i].likeNum;
 
                 this.$http.get('/post/{id}',{params:{id:postid}}).then(function(res){
 

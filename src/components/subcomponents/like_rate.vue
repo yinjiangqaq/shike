@@ -48,7 +48,6 @@ export default {
     created(){
         this.$http.get('/billboardOfLike').then(function(res){
            // window.alert("成功");
-
             console.log(res.body);
             this.postlist_like=res.body
 
