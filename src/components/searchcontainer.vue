@@ -25,7 +25,7 @@
         <div class="ending" style="text-align: center;margin-top:80px">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <li @click="down">
+                      <li @click="down">
                         <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>

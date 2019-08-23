@@ -41,7 +41,7 @@
                 <ul class="nav nav-tabs">
                     <li role="presentation" data-toggle="tab" class="active"><router-link to="/header/personalhomepage/snack" class="router_link"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;零食帖</router-link></li>
                     <li role="presentation" data-toggle="tab"><router-link to="/header/personalhomepage/myfavourite" class="router_link"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;我的喜爱</router-link></li>
-                    <li role="presentation" data-toggle="tab"><router-link to="/header/personalhomepage/dynamic" class="router_link"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp;动态</router-link></li>
+                    <li role="presentation" data-toggle="tab"><router-link to="/header/personalhomepage/dynamic" class="router_link"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&nbsp;推荐</router-link></li>
                 </ul>
             </div>
             

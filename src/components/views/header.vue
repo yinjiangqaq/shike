@@ -15,7 +15,7 @@
                 </router-link>
                 <div class="dropdown">
                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="../../images/personphoto.jpg" alt=""  class="personphoto">
+                        <img :src="portrait" alt=""  class="personphoto">
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -70,16 +70,20 @@ export default {
             backgroundImage:'url('+require('../../images/header.png')+')',
            
             list1:[{searchText:''},],
-               
+            portrait:'',
            
         }
     },
        created(){
-this.getUsername();
-//  var userID=this.$cookie.get('user');
-// this.$http.post('',{userID,{emulateJSON:true}).then(function(res){
 
-// });
+this.getUsername();
+ this.$http.get('/user/{id}',{params:{id:this.$cookie.get("userId")}}).then(function(res){
+console.log(res.body);
+this.portrait=res.body.headPortrait;
+},function(res){
+    window.alert("失败");
+     this.$router.push('/');
+});
     },
 
     methods:{
@@ -87,6 +91,7 @@ getUsername(){
 
     this.userName=this.$cookie.get('user');
 },
+
 search(){
     var searchkey =this.searchText;
     this.$router.push({path:'/header/searchcontainer',query:{keyword:searchkey}

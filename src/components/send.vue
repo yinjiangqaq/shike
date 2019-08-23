@@ -106,6 +106,7 @@ this.$http.post('/post',formData).then(function(res){
   this.$router.push('/header');
 },function(res){
   window.alert("失败");
+  this.$router.push('/');
 })
 }
 }

@@ -26,19 +26,19 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li @click="down">
-                        <a href="#" aria-label="Previous">
+                        <router-link to="/header/homecontainer">
                             <span aria-hidden="true">&laquo;</span>
-                        </a>
+                        </router-link>
                     </li>
-                    <li @click="page(0)"><a href="#">1</a></li>
-                    <li @click="page(1)"><a href="#">2</a></li>
-                    <li @click="page(2)"><a href="#">3</a></li>
-                    <li @click="page(3)"><a href="#">4</a></li>
-                    <li @click="page(4)"><a href="#">5</a></li>
+                    <li @click="page(0)"><router-link to="/header/homecontainer">1</router-link></li>
+                    <li @click="page(1)"><router-link to="/header/homecontainer">2</router-link></li>
+                    <li @click="page(2)"><router-link to="/header/homecontainer">3</router-link></li>
+                    <li @click="page(3)"><router-link to="/header/homecontainer">4</router-link></li>
+                    <li @click="page(4)"><router-link to="/header/homecontainer">5</router-link></li>
                     <li @click="up">
-                        <a href="#" aria-label="Next">
+                       <router-link to="/header/homecontainer">
                             <span aria-hidden="true">&raquo;</span>
-                        </a>
+                       </router-link>
                     </li>
                 </ul>
             </nav>
@@ -63,7 +63,13 @@ export default{
       console.log(res.body);
      this.list=res.body;
     //  this.$cookie.set('pageNum',0,1);
-  
+//    for(var i=0;i<this.list.length;i++){
+//                 if(this.list[i].author==null){
+//                     console.log(i);
+//                     this.list.splice(i,1);
+//                     i--;
+//                 }
+//             }
     
         },function(res){
         window.alert("失败");

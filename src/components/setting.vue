@@ -17,7 +17,7 @@
       </div>
       <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" name="putHeadPortrait" />
     </div>
-
+     <input type="text" name="id" style="display:none;" v-model="userId">
     <div class="name_bock">
       <div class="name">
         用户名
@@ -92,10 +92,14 @@
             text:'',
             textarea: '',
             value1: '',
-            radio:'1'
+            radio:'1',
+            userId:'',
         }
     },
-    
+    created(){
+  this.userId=this.$cookie.get("userId");
+    },
+
     methods:{
         uploadHeadImg: function () {
           $(".hiddenInput").click();
@@ -116,7 +120,8 @@
         },
         submit:function(e){
           var formData=new FormData(e.target);
-          this.$http.post('/post',formData).then(function(res){
+        
+          this.$http.put('/user',formData).then(function(res){
             this.$router.push('/header');
           },function(res){
             window.alert("失败")
